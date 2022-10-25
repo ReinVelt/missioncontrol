@@ -44,7 +44,7 @@ $routes->get('app/missiontargetform/(:num)/(:num)', 'App::missiontargetform/$1/$
 
 
 //SPECIAL ROUTES
-$routes->get('api/gpslog/kml', 'Api\Gpslog::kml');
+$routes->get('api/gpslog/kml(:num)', 'Api\Gpslog::kml/$1');
 $routes->get('api/missiontarget/kml/(:num)', 'Api\Missiontarget::kml/$1');
 $routes->get('api/missiontarget/list/(:num)', 'Api\Missiontarget::list/$1');
 

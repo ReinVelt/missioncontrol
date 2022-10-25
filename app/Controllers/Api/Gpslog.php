@@ -54,6 +54,8 @@ class Gpslog extends ResourceController
         }
     }
 
+   
+
     // update
     public function update($id = null){
         $apiModel = new GpslogModel();
@@ -100,9 +102,13 @@ class Gpslog extends ResourceController
         }
     }
 
-    public function kml()
+    public function show($id=null)
     {
-        $userId=1;// @TODO
+        return $this->getGpslog($id);
+    }
+
+    public function kml($userId)
+    {
         $apiModel = new GpslogModel();
         $data = $apiModel->where('userId', $userId)->findAll();
         $markup=view('components/maps/kml/gpstrack',array("data"=>$data));

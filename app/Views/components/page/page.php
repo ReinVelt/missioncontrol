@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="col-md-7">
-            <div class="map" id="map"></div> 
+            <div class="map" id="map" style="width:100%; height:90vh"></div> 
             <div id="info"></div>
         </div>
         <div class="col-md-2">
@@ -156,8 +156,9 @@
     }
 </script>
 <script type="text/javascript" src="/vendor/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
-<script type="text/javascript" crossorigin src="/js/data/main.js "></script>
-<script type="text/javascript" crossorigin src="/js/forms.js "></script>
+<script type="text/javascript" crossorigin src="/js/data/main.js"></script>
+<script type="text/javascript" crossorigin src="/js/forms.js"></script>
+<script type="text/javascript" crossorigin src="/js/maps/kml.js"></script>
 
 
 </body>
