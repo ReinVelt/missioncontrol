@@ -18,7 +18,7 @@ import XYZ from './node_modules/ol/source/XYZ';
 
 const vector = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: 'http://localhost:8080/api/gpslog/kml/1',
+    url: document.getElementById("map").getAttribute("data-kml"), //'http://localhost:8080/api/gpslog/kml/1',
     format: new ol.format.KML(),
   }),
 });
@@ -28,7 +28,19 @@ const map = new ol.Map({
   layers: [
     new ol.layer.Tile({
       source: new ol.source.OSM()
-    }),vector
+    })
+    ,
+    new ol.layer.Tile({
+      source: new ol.source.Stamen({
+        layer: 'watercolor',
+      }),
+    }),
+    new ol.layer.Tile({
+      source: new ol.source.Stamen({
+        layer: 'terrain-labels',
+      }),
+    }),
+   vector
   ],
   view: new ol.View({
     center: ol.proj.fromLonLat([7,53]),
@@ -64,12 +76,22 @@ map.on('click', function (evt) {
 });
 
 
+vector.once("change",function(e){
+  var extent=vector.getSource().getExtent();
+  if (extent[0]!=Infinity)
+  {
+    map.getView().fit(extent);
+    
+  }
+
+})
+
 const geolocation = new ol.Geolocation({
   // enableHighAccuracy must be set to true to have the heading value.
   trackingOptions: {
     enableHighAccuracy: true,
   },
- // projection: view.getProjection(),
+ projection: map.getView().getProjection(),
 });
 
 

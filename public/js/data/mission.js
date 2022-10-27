@@ -92,7 +92,7 @@ function updateMissiontargets(data)
               html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
               html=html+'   <h5 class="mb-1"><a href="/app/missiontarget/'+data[i].id+'">'+data[i].name+'</a></h5>';
-              html=html+'   <small><a data-bs-toggle="modal" data-bs-target="#formModal" class="material-icons" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">edit</a></small>';
+              html=html+'   <small><a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" class="material-icons" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">edit</a></small>';
               html=html+' </div>';
               html=html+' <p class="mb-1">'+data[i].description+'</p>';
               html=html+' <small>'+data[i].datum+'</small>';
@@ -106,7 +106,7 @@ function updateMissiontargets(data)
 
 
 
-//getMissionTargetData(1);
+
 
 
 

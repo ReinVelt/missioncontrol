@@ -91,7 +91,7 @@ function missionEditForm()
         success: function( response ) {
             console.log(response);
             document.getElementById("missionForm").reset(); 
-            $('#formModal').modal('hide');
+            $('#formModalMission').modal('hide');
             getMissionData();     
         }
       });
@@ -114,14 +114,8 @@ function missionEditForm()
 function responseGetMissiontargetFormHandler () {
   document.getElementById("missionTargetFormContainer").innerHTML=this.responseText;
   missiontargetEditForm();
-  document.getElementById("coordinateselectorcontainer").appendChild(document.getElementById("coordinateselector"));
-  document.getElementById("coordinateselector").style.width="100%";
-  document.getElementById("coordinateselector").style.height="100%";
-  console.log(coordinateselector);
 
-
-
-
+  coordinateselectorInit('coordinateselectorcontainer');
 
 };
 
@@ -130,7 +124,7 @@ function getMissiontargetForm(missionId=null,missionTargetId=null)
 var xhttp = new XMLHttpRequest();
 xhttp.onload = responseGetMissiontargetFormHandler;
 var url="http://localhost:8080/app/missiontargetform/"+missionId;
-if (missionId>0)
+if (missionTargetId>0)
 {
    url="http://localhost:8080/app/missiontargetform/"+missionId+"/"+missionTargetId;
 }
@@ -227,8 +221,9 @@ function missiontargetEditForm()
       success: function( response ) {
           console.log(response);
           document.getElementById("missiontargetForm").reset(); 
-          $('#formModal').modal('hide');
-          getMissionTargetData(parseInt(form.elements.missionId.value));     
+          $('#formModalMissionTarget').modal('hide');
+          //getMissionTargetData(parseInt(form.elements.missionId.value));  
+          location.reload();   
       }
     });
   }

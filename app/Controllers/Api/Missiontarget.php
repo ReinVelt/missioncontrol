@@ -40,7 +40,6 @@ class Missiontarget extends ResourceController
             'datum'  => $this->request->getVar('datum'),
             'finished'  => $this->request->getVar('finished'),
         ];
-        log_message('error',print_r($data,true));
         $apiModel->insert($data);
         $response = [
           'status'   => 201,
@@ -84,8 +83,7 @@ class Missiontarget extends ResourceController
             'datum'  => $this->request->getVar('datum'),
             'finished'  => $this->request->getVar('finished'),
         ];
-        log_message(1,"id=$id, data=".print_r($data,true ));
-        $r=$apiModel->update($id, $data);
+         $r=$apiModel->update($id, $data);
         $response = [
           'status'   => 200,
           'error'    => null,
@@ -120,7 +118,7 @@ class Missiontarget extends ResourceController
        
         $apiModel = new MissionTargetModel();
         $data = $apiModel->where('missionId', $missionId)->findAll();
-        $markup=view('components/maps/kml/mission',array("data"=>$data));
+        $markup=view('components/maps/kml/missiontargets',array("data"=>$data));
         $response = [
             'status'   => 200,
             'error'    => null,

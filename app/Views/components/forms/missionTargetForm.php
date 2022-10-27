@@ -16,7 +16,7 @@
         <input name="description" type="text" maxlength="255" class="form-control" id="missiontarget_description" aria-describedby="missiontarget_description_help" placeholder="Enter mission target descriprtion" value="<?= $data["description"]; ?>">
     </div>
     <div class="form-group">
-        <div id="coordinateselectorcontainer" style="width:100%; height:200px"></div>
+        <div id="coordinateselectorcontainer"  class="coordinatepicker" width="100%" height="200" style="width:100%; height:200px" data-kml="<?= base_url().'/api/missiontarget/kml/'.$missionId; ?>"></div>
         <label for="coordinate">Coordinate</label>
         <input name="coordinate" type="text" class="form-control" id="coordinate" aria-describedby="missiontarget_coordinate_help" placeholder="Enter coordinate" value="<?= $data["latitude"]; ?>,<?= $data["longitude"]; ?>">
     </div>

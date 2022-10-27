@@ -8,12 +8,12 @@ class App extends BaseController
 {
     public function index()
     {
-        return view('components/page/page');
+        return view('components/page/missions');
     }
 
     public function mission($missionId)
     {
-        return view('components/page/mission',array("missionId"=>$missionId));
+        return view('components/page/missiontargets',array("missionId"=>$missionId));
     }
 
     public function missionForm($missionId=null)

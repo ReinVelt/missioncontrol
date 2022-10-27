@@ -3,76 +3,84 @@
 namespace App\Controllers\Api;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\MissionModel;
-use App\Models\MissionTargetModel;
+use App\Models\MediaModel;
 
-class Mission extends ResourceController
+
+class Media extends ResourceController
 {
 
     use ResponseTrait;
 
     // get all
     public function index(){
-      $apiModel = new MissionModel();
+      $apiModel = new MediaModel();
       $data = $apiModel->orderBy('id', 'DESC')->findAll();
       return $this->respond($data);
     }
 
     // create
     public function create() {
-        $apiModel = new MissionModel();
+        $apiModel = new MediaModel();
         $data = [
+            'userId'=>$this->request->getVar("userId"),
+            'missionId'=>$this->request->getVar("missionId"),
+            'longitude'=>$this->request->getVar("longitude"),
+            'latitude'=>$this->request->getVar("latitude"),
             'name' => $this->request->getVar('name'),
             'description'  => $this->request->getVar('description'),
-            'data'  => "",
-            'start'  => $this->request->getVar('start'),
-            'end'  => $this->request->getVar('end'),
-            'finished'  => $this->request->getVar('finished'),
+            'mimetype'  => $this->request->getVar('mimetype'),
+            'filesize'  => $this->request->getVar('filesize'),
+            'url'  => $this->request->getVar('url'),
+            'datum'  => $this->request->getVar('datum')
         ];
         $apiModel->insert($data);
         $response = [
           'status'   => 201,
           'error'    => null,
           'messages' => [
-              'success' => 'Mission created'
+              'success' => 'Media created'
           ]
       ];
       return $this->respondCreated($response);
     }
 
     // single
-    public function getMission($id = null){
-        $apiModel = new MissionModel();
+    public function getMedia($id = null){
+        $apiModel = new MediaModel();
         $data = $apiModel->where('id', $id)->first();
         if($data){
             return $this->respond($data);
         }else{
-            return $this->failNotFound('Mission does not exist.');
+            return $this->failNotFound('Media does not exist.');
         }
     }
     public function show($id=null)
     {
-        return $this->getMission($id);
+        return $this->getMedia($id);
     }
 
     // update
     public function update($id = null){
-        $apiModel = new MissionModel();
+        $apiModel = new MediaModel();
         //$id = $this->request->getVar('id');
         $data = [
+            'userId'=>$this->request->getVar("userId"),
+            'missionId'=>$this->request->getVar("missionId"),
+            'longitude'=>$this->request->getVar("longitude"),
+            'latitude'=>$this->request->getVar("latitude"),
             'name' => $this->request->getVar('name'),
             'description'  => $this->request->getVar('description'),
-            'data'  => $this->request->getVar('data'),
-            'start'  => $this->request->getVar('start'),
-            'end'  => $this->request->getVar('end'),
-            'finished'  => $this->request->getVar('finished'),
+            'mimetype'  => $this->request->getVar('mimetype'),
+            'filesize'  => $this->request->getVar('filesize'),
+            'url'  => $this->request->getVar('url'),
+            'datum'  => $this->request->getVar('datum')
         ];
          $r=$apiModel->update($id, $data);
         $response = [
           'status'   => 200,
           'error'    => null,
           'messages' => [
-              'success' => 'Mission updated.'.$r
+              'success' => 'Media updated.'.$r
           ]
       ];
       return $this->respond($response);
@@ -80,7 +88,7 @@ class Mission extends ResourceController
 
     // delete
     public function delete($id = null){
-        $apiModel = new MissionModel();
+        $apiModel = new MediaModel();
         $data = $apiModel->where('id', $id)->delete($id);
         if($data){
             $apiModel->delete($id);
@@ -88,21 +96,21 @@ class Mission extends ResourceController
                 'status'   => 200,
                 'error'    => null,
                 'messages' => [
-                    'success' => 'Mission deleted'
+                    'success' => 'Media deleted'
                 ]
             ];
             return $this->respondDeleted($response);
         }else{
-            return $this->failNotFound('Mission does not exist.');
+            return $this->failNotFound('Media does not exist.');
         }
     }
 
     public function kml()
     {
        //missions overview map
-        $targetModel = new MissionTargetModel();
+        $targetModel = new MediaModel();
         $targets = $targetModel->orderBy('id','asc')->findAll();
-        $missionModel = new MissionTargetModel();
+        $missionModel = new MissionModel();
         $missions = $missionModel->orderBy('id','asc')->findAll();
         $markup=view('components/maps/kml/missions',array("targets"=>$targets,"missions"=>$missions));
         $response = [

@@ -85,16 +85,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7">
-            <div class="map" id="map" style="width:100%; height:90vh"></div> 
+        <div class="col-md-9 col-auto">
+            <div class="map" id="map" style="width:100%; height:90vh" data-kml="http://localhost:8080/api/mission/kml" ></div> 
             <div id="info"></div>
         </div>
-        <div class="col-md-2">
-    
-        <a href="#"  onclick="getMissionForm(0)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Create new mission</a><br>
-           
-
-        </div>
+       >
 
     </div>
  

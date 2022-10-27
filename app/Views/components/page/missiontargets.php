@@ -73,17 +73,19 @@
         <div class="col-md-3">
             <div class="panel border rounded">
                 <div class="panel-title">MISSION <?= $missionId; ?></div>
+                <small><a data-bs-toggle="modal" data-bs-target="#formModalMission" class="material-icons" onclick="getMissionForm(<?= $missionId; ?>); return false;">edit</a></small>
+         
                 <div id="missionDetails" class="panel-body">---</div>
             </div>   
             <div class="panel border ">
-                <div class="panel-title">MISSION TARGETS <a href="#" onclick="getMissiontargetForm(<?= $missionId; ?>,0);" data-bs-toggle="modal" data-bs-target="#formModal">+</a></div>
+                <div class="panel-title">MISSION TARGETS <a href="#" onclick="getMissiontargetForm(<?= $missionId; ?>,0);" data-bs-toggle="modal" data-bs-target="#formModalMissionTarget">+</a></div>
                 <div id="missionTargets" class="panel-body">---</div>
             </div>   
 
         
         </div>
         <div class="col-md-6">
-            <div class="map" id="map"></div> 
+            <div class="map" id="map" style="width:100%; height:90vh;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
             <div id="info"></div>
         </div>
         <div class="col-md-3">col3
@@ -119,7 +121,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModalMissionTarget" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -134,7 +136,22 @@
   </div>
 </div>
 
-<div id="coordinateselector" style="width:100px; height:100px;"></div>
+<div class="modal fade" id="formModalMission" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="formModalLabel">MISSION</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"  id="missionFormContainer">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 
 <!-- SCRIPTS -->
 
@@ -150,7 +167,8 @@
 <script type="text/javascript" src="/vendor/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
 <script type="text/javascript" crossorigin src="/js/data/mission.js "></script>
 <script type="text/javascript" crossorigin src="/js/forms.js"></script>
-
+<script type="text/javascript" crossorigin src="/js/maps/kml.js"></script>
+<script type="text/javascript" crossorigin src="/js/maps/coordinatepickerwidget.js"></script>
 <script language="javascript">
   getMissionDetailData(<?= $missionId ?>);
   getMissionTargetData(<?= $missionId ?>);
