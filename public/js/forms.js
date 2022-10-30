@@ -231,3 +231,199 @@ function missiontargetEditForm()
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+function responseGetMediaFormHandler () {
+  document.getElementById("mediaFormContainer").innerHTML=this.responseText;
+  mediaEditForm();
+
+  //coordinateselectorInit('coordinatemediacontainer');
+
+};
+
+function getMediaForm(missionId=null)
+{
+var xhttp = new XMLHttpRequest();
+xhttp.onload = responseGetMediaFormHandler;
+var url="http://localhost:8080/app/mediaform/"+missionId;
+xhttp.open('GET',url, true);
+xhttp.send();
+}
+
+
+function mediaEditForm()
+{
+
+
+ if ($("#mediaForm").length > 0) {
+    $("#mediaForm").validate({
+
+    
+
+  rules: {
+    userfile: {
+      required: true,
+    },
+   
+  },
+
+  messages: {
+   
+      userfile: {
+        required: "Please select file",
+      }
+  },
+
+  submitHandler: function(form) {
+    //insert(POST) works OK puit update/put does not receive fields. whats comes in?
+    console.log("form",form);
+    var submitMethod="POST";
+    var missionId=form.elements.missionId.value;
+    var submitURL="/api/media/upload/"+missionId;
+    
+   
+    $('#mediaFormSubmit').html('Sending..');
+    
+
+    var data = new FormData(form);
+  
+    console.log("formdata",data);
+    $.ajax({
+      url:      submitURL,
+      type:     submitMethod,
+      data:     data, //formData,
+      dataType: 'text',
+      cache: false,
+      contentType: false,
+      processData:false,
+      success: function( response ) {
+          console.log(response);
+          document.getElementById("mediaForm").reset(); 
+          $('#formModalMedia').modal('hide');
+          //getMissionTargetData(parseInt(form.elements.missionId.value));  
+          //location.reload();   
+      }
+    });
+  }
+})
+}
+
+}
+
+/*
+
+function mediaEditForm()
+{
+
+
+ if ($("#mediaForm").length > 0) {
+    $("#mediaForm").validate({
+
+    
+
+  rules: {
+    name: {
+      required: true,
+    },
+    description: {
+      required: true,
+      maxlength: 255,
+    }, 
+    datum: {
+      required: true,
+    },   
+    coordinate: {
+      required: true,
+    },
+  },
+
+  messages: {
+    name: {
+      required: "Please enter name",
+    },
+
+    description: {
+      required: "Please enter a description",
+      maxlength: "The description should less than or equal to 255 characters",
+      }, 
+      
+      datum: {
+        required: "Please enter a start date",
+      },
+      coordinate: {
+        required: "Please enter location",
+      }
+  },
+
+  submitHandler: function(form) {
+    //insert(POST) works OK puit update/put does not receive fields. whats comes in?
+    console.log("form",form);
+    var submitMethod="POST";
+    var submitURL="/api/media";
+    var formData=$('#mediaForm').serialize();
+    formData=JSON.stringify({
+      "id":           parseInt(form.elements.id.value),
+      "userId" :      parseInt(form.elements.userId.value),
+      "userfile":          form.elements.userfile.value,
+      "missionId" :   parseInt(form.elements.missionId.value),
+      "name":         form.elements.name.value,
+      "description":  form.elements.description.value,
+      "datum":        form.elements.datum.value,
+      "coordinate":   form.elements.coordinate.value,
+      "mimetype":     form.elements.mimetype.value,
+      "filesize":     form.elements.filesize.value
+
+    });
+    var contenttype='application/json';
+    if (form.elements.id.value>0)
+    {
+      submitMethod="PUT";
+      submitURL="/api/media/"+form.elements.id.value;
+      contenttype='application/json';
+      formData=JSON.stringify({
+        "id":           parseInt(form.elements.id.value),
+        "userId" :      parseInt(form.elements.userId.value),
+        "userfile":     form.elements.userfile.value,
+        "missionId" :   parseInt(form.elements.missionId.value),
+        "name":         form.elements.name.value,
+        "description":  form.elements.description.value,
+        "datum":        form.elements.datum.value,
+        "coordinate":   form.elements.coordinate.value,
+        "mimetype":     form.elements.mimetype.value,
+        "filesize":     form.elements.filesize.value
+      });
+    }
+    $('#mediaFormSubmit').html('Sending..');
+    
+
+    var data = new FormData();
+    console.log("formdata",formData);
+    $.ajax({
+      url:      submitURL,
+      type:     submitMethod,
+      data:     formData,
+      contentType: contenttype,
+      dataType: "json",
+      encode:   true,
+      success: function( response ) {
+          console.log(response);
+          document.getElementById("mediaForm").reset(); 
+          $('#formModalMedia').modal('hide');
+          //getMissionTargetData(parseInt(form.elements.missionId.value));  
+          location.reload();   
+      }
+    });
+  }
+})
+}
+
+}*/

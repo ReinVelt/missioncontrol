@@ -10,7 +10,6 @@ class MediaModel extends Model
     protected $allowedFields = [
       'userId', 
       'missionId',
-      'missionTargetId',
       'longitude',
       'latitude',
       'name',

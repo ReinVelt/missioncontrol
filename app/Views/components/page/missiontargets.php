@@ -88,7 +88,8 @@
             <div class="map" id="map" style="width:100%; height:90vh;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
             <div id="info"></div>
         </div>
-        <div class="col-md-3">col3
+        <div class="col-md-3">
+        <a data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>); return false;">upload</a>
         </div>
 
     </div>
@@ -144,6 +145,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body"  id="missionFormContainer">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="formModalMedia" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="formModalLabel">MEDIA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"  id="mediaFormContainer">
         ...
       </div>
       
