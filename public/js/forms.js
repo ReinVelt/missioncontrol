@@ -8,10 +8,10 @@ function getMissionForm(missionId=null)
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = responseGetMissionFormHandler;
-  var url="http://localhost:8080/app/missionform";
+  var url=baseUrl+"/app/missionform";
   if (missionId>0)
   {
-     url="http://localhost:8080/app/missionform/"+missionId;
+     url=baseUrl+"/app/missionform/"+missionId;
   }
   xhttp.open('GET',url, true);
   xhttp.send();
@@ -123,10 +123,10 @@ function getMissiontargetForm(missionId=null,missionTargetId=null)
 {
 var xhttp = new XMLHttpRequest();
 xhttp.onload = responseGetMissiontargetFormHandler;
-var url="http://localhost:8080/app/missiontargetform/"+missionId;
+var url=baseUrl+"/app/missiontargetform/"+missionId;
 if (missionTargetId>0)
 {
-   url="http://localhost:8080/app/missiontargetform/"+missionId+"/"+missionTargetId;
+   url=baseUrl+"/app/missiontargetform/"+missionId+"/"+missionTargetId;
 }
 xhttp.open('GET',url, true);
 xhttp.send();
@@ -254,7 +254,7 @@ function getMediaForm(missionId=null)
 {
 var xhttp = new XMLHttpRequest();
 xhttp.onload = responseGetMediaFormHandler;
-var url="http://localhost:8080/app/mediaform/"+missionId;
+var url=baseUrl+"/app/mediaform/"+missionId;
 xhttp.open('GET',url, true);
 xhttp.send();
 }

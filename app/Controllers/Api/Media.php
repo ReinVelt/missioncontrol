@@ -18,19 +18,32 @@ class Media extends ResourceController
       return $this->respond($data);
     }
 
+    public function mission($missionId){
+        $apiModel = new MediaModel();
+        $data = $apiModel->where('missionId', $missionId)->findAll();
+        return $this->respond($data);
+      }
+
     public function upload($missionId)
     {
         $data=array();
         $files=$this->request->getFiles();
         log_message(1,print_r($files,true));
-        foreach($files["userfile"] as $k=>$file)
+        foreach($files["userfile"] as $k=>$file) //@todo fix error with large multi upload
         {
             if (is_object($file) && $file->isValid() && !$file->hasMoved())
             {
                
                     $filePath=WRITEPATH.'uploads/'.$file->store();
                     $r=new File($filePath);
+                    $datecreated=strftime("%Y-%m-%d %H:%M:%S",time());
                     $exif=exif_read_data($filePath,'EXIF',true,false);
+
+                    //get information from exif if possible
+                    if (is_array($exif) && isset($exif["EXIF"]) && isset($exif["EXIF"]["DateTimeOriginal"]) )
+                    {
+                        $datecreated=$exif["EXIF"]["DateTimeOriginal"];
+                    }
                     log_message(1,print_r($exif,true));
                     $fields = [
                         'userId'=>1,
@@ -42,7 +55,7 @@ class Media extends ResourceController
                         'mimetype'  => $r->getMimeType(),
                         'filesize'  => $r->getSize(),
                         'uri'  => $filePath,
-                        'datum'  => $exif["EXIF"]["DateTimeOriginal"]
+                        'datum'  => $datecreated
                     ];
                     $data[$k]=$fields;
                     $apiModel = new MediaModel();
@@ -54,7 +67,7 @@ class Media extends ResourceController
         $response=[
             'status'   => 201,
             'error'    => "",
-            'data'    => $data,
+            'data'    =>json_encode($data),
             'messages' => [
                 'success' => 'Media upped'
             ]

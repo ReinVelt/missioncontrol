@@ -5,7 +5,8 @@ var data={
             "active":   
             {
                 "mission":[],
-                "targets":[]
+                "targets":[],
+                "media":[]
             }
         };
 
@@ -26,6 +27,12 @@ function responseMissionDetailHandler () {
     updateMissionDetails(jsonData);
   };
 
+  function responseMissionMediaHandler () {
+    var jsonData = JSON.parse(this.responseText);
+    data.active.media=jsonData;
+    updateMissionMedia(jsonData);
+  };
+
 function responseGpslogHandler () {
    var jsonData = JSON.parse(this.responseText);
    data.gpslog=jsonData;
@@ -35,7 +42,7 @@ function getMissionData()
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = responseMissionHandler;
-  xhttp.open('GET','http://localhost:8080/api/mission', true);
+  xhttp.open('GET',baseUrl+'/api/mission', true);
   xhttp.send();
 }
 
@@ -43,7 +50,7 @@ function getMissionTargetData(missionId)
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = responseMissiontargetHandler;
-  xhttp.open('GET','http://localhost:8080/api/missiontarget/list/'+missionId, true);
+  xhttp.open('GET',baseUrl+'/api/missiontarget/mission/'+missionId, true);
   xhttp.send();
 }
 
@@ -51,7 +58,15 @@ function getMissionDetailData(missionId)
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = responseMissionDetailHandler;
-  xhttp.open('GET','http://localhost:8080/api/mission/'+missionId, true);
+  xhttp.open('GET',baseUrl+'/api/mission/'+missionId, true);
+  xhttp.send();
+}
+
+function getMissionMedia(missionId)
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onload = responseMissionMediaHandler;
+  xhttp.open('GET',baseUrl+'/api/media/mission/'+missionId, true);
   xhttp.send();
 }
 
@@ -59,7 +74,7 @@ function getGpslogData()
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = responseGpslogHandler;
-  xhttp.open('GET','http://localhost:8080/api/gpslog', true);
+  xhttp.open('GET',baseUrl+'/api/gpslog', true);
   xhttp.send();
 }
 
@@ -78,6 +93,25 @@ function updateMissionDetails(data)
         el.innerHTML=html;
        //alert(html);
     }
+   
+}
+
+function updateMissionMedia(data)
+{
+    var el=document.getElementById("missionMediaList");
+    var html="";
+    if (el)
+    {
+        for (var i=0;i<data.length;i++)
+        {
+         // var url=data[i].url.substring(10,100)
+        
+            html=html+'<img src="/app/imageresize/'+data[i].id+'" style="max-height:100px; max-width:100%;">';
+          
+        }
+        el.innerHTML=html;
+        console.log("missionsmedialist updated");
+  }
    
 }
 

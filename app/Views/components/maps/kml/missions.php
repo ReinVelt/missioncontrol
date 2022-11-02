@@ -30,7 +30,7 @@ print '<?xml version="1.0" encoding="UTF-8"?>'; ?>
             </IconStyle>';
             $c=$colors[$missionId%count($styles)];
             $d=substr($c,4,2).substr($c,2,2).substr($c,0,2);
-            print '<LabelStyle><colorMode>normal</colorMode><color>ff'.$d.'</color><scale>0.7</scale></LabelStyle>';
+            print '<LabelStyle><colorMode>normal</colorMode><color>ffffffff</color><scale>0.7</scale></LabelStyle>';
             print '</Style>';
             print "\n";
            

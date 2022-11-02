@@ -17,7 +17,7 @@ class Missiontarget extends ResourceController
       return $this->respond($data);
     }
 
-    public function list($missionId){
+    public function mission($missionId){
         $apiModel = new MissionTargetModel();
         $data = $apiModel->where('missionId', $missionId)->findAll();
         return $this->respond($data);

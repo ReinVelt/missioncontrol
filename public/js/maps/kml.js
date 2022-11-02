@@ -27,10 +27,11 @@ const map = new ol.Map({
   target: 'map',
   layers: [
     new ol.layer.Tile({
-      source: new ol.source.OSM()
+      source: new ol.source.OSM(),
+      minZoom:19
     })
     ,
-    new ol.layer.Tile({
+   /* new ol.layer.Tile({
       source: new ol.source.Stamen({
         layer: 'watercolor',
       }),
@@ -39,6 +40,12 @@ const map = new ol.Map({
       source: new ol.source.Stamen({
         layer: 'terrain-labels',
       }),
+    }),*/
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        maxZoom: 19
+      })
     }),
    vector
   ],

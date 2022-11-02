@@ -17,6 +17,11 @@ class App extends BaseController
         return view('components/page/missiontargets',array("missionId"=>$missionId));
     }
 
+    public function devices()
+    {
+        return view('components/page/devices');
+    }
+
     public function missionForm($missionId=null)
     {
         $missionModel=new MissionModel();
@@ -75,5 +80,23 @@ class App extends BaseController
             $row=array("id"=>"NULL", "missionId"=>$missionId, "name"=>"","description"=>"","latitude"=>"0","longitude"=>"0","datum"=>"","finished"=>"0");
         }
         return view("components/forms/mediaForm",array("id"=> $row["id"],"missionId"=>$row["missionId"], "method"=>$method,"url"=>$url,"data"=>$row));
+    }
+
+    function imageResize($mediaId)
+    {
+        $mediaModel=new MediaModel();
+        $row = $mediaModel->where('id', $mediaId)->first();
+        if (is_file($row["uri"]))
+        {
+            $data=file_get_contents($row["uri"]);
+            $gd=imagecreatefromstring($data);
+        }
+        else
+        {
+            $gd=imagecreate(300,200);
+        }
+        header("Content-type: ".$row["mimetype"]);
+        imagescale($gd,300);
+        imagejpeg($gd);
     }
 }

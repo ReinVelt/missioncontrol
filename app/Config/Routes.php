@@ -36,27 +36,30 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('app/mission/(:num)'    , 'App::mission/$1');
-$routes->get('app/missionform'       , 'App::missionform');
-$routes->get('app/missionform/(:num)', 'App::missionform/$1');
-$routes->get('app/missiontargetform/(:num)'       , 'App::missiontargetform/$1');
-$routes->get('app/missiontargetform/(:num)/(:num)', 'App::missiontargetform/$1/$2');
-$routes->get('app/mediaform/(:num)'       , 'App::mediaform/$1');
-$routes->get('app/mediaform/(:num)/(:num)'       , 'App::mediaform/$1/$2');
+$routes->get('app/mission/(:num)'                   , 'App::mission/$1');
+$routes->get('app/missionform'                      , 'App::missionform');
+$routes->get('app/missionform/(:num)'               , 'App::missionform/$1');
+$routes->get('app/missiontargetform/(:num)'         , 'App::missiontargetform/$1');
+$routes->get('app/missiontargetform/(:num)/(:num)'  , 'App::missiontargetform/$1/$2');
+$routes->get('app/mediaform/(:num)'                 , 'App::mediaform/$1');
+$routes->get('app/mediaform/(:num)/(:num)'          , 'App::mediaform/$1/$2');
+$routes->get('app/imageresize/(:num)'               , 'App::imageresize/$1');
+$routes->get('app/devices'                          , 'App::devices');
 
 
 //SPECIAL ROUTES
-$routes->get('api/mission/kml', 'Api\Mission::kml');
-$routes->get('api/gpslog/kml/(:num)', 'Api\Gpslog::kml/$1');
-$routes->get('api/missiontarget/kml/(:num)', 'Api\Missiontarget::kml/$1');
-$routes->get('api/missiontarget/list/(:num)', 'Api\Missiontarget::list/$1');
-$routes->post('api/media/upload/(:num)', 'Api\Media::upload/$1');
+$routes->get('api/mission/kml',                     'Api\Mission::kml');
+$routes->get('api/gpslog/kml/(:num)',               'Api\Gpslog::kml/$1');
+$routes->get('api/missiontarget/kml/(:num)',        'Api\Missiontarget::kml/$1');
+$routes->get('api/missiontarget/mission/(:num)',    'Api\Missiontarget::mission/$1');
+$routes->post('api/media/upload/(:num)',            'Api\Media::upload/$1');
+$routes->get('api/media/mission/(:num)',            'Api\Media::mission/$1');
 
 //RESTAPI ROUTING
-$routes->resource('api/mission',['controller' => 'Api\Mission']);
-$routes->resource('api/missiontarget',['controller' => 'Api\Missiontarget']);
-$routes->resource('api/gpslog', ['controller'  => 'Api\Gpslog']);
-$routes->resource('api/media', ['controller'  => 'Api\Media']);
+$routes->resource('api/mission',                    ['controller' => 'Api\Mission']);
+$routes->resource('api/missiontarget',              ['controller' => 'Api\Missiontarget']);
+$routes->resource('api/gpslog',                     ['controller'  => 'Api\Gpslog']);
+$routes->resource('api/media',                      ['controller'  => 'Api\Media']);
 
 
 /*
