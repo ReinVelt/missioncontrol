@@ -37,7 +37,7 @@ print '<?xml version="1.0" encoding="UTF-8"?>'; ?>
             print '<Style id="route'.$missionId.'">';
             print '
             <LineStyle>
-              <color>ff'.$d.'</color>
+              <color>88'.$d.'</color>
             </LineStyle>
             ';
            

@@ -111,9 +111,9 @@ function highlightMap(args)
 
 
 function flyTo(location, done) {
-  const duration = 5000;
+  const duration = 4000;
   var view=map.getView();
-  const zoom = 9; //view.getZoom();
+  const zoom = 8; //view.getZoom();
   let parts = 2;
   let called = false;
   function callback(complete) {
@@ -138,11 +138,18 @@ function flyTo(location, done) {
     {
       center: location,
       duration: duration,
-      zoom:zoom
+      zoom:14
     },
     callback
   );
-  
+  view.animate(
+    {
+      center: location,
+      duration: duration,
+      zoom:10
+    },
+    callback
+  );
  
 }
 

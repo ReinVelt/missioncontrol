@@ -7,7 +7,14 @@ use App\Models\MediaModel;
 
 class App extends BaseController
 {
+
     public function index()
+    {
+        header('Access-Control-Allow-Origin: *');
+        return view('components/page/intro');
+    }
+
+    public function missions()
     {
         return view('components/page/missions');
     }

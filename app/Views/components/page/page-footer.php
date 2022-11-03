@@ -2,7 +2,7 @@
 <footer>
     <div class="environment">
 
-        Page rendered in {elapsed_time} seconds. Environment: <?= ENVIRONMENT ?>. &copy; <?= date('Y') ?> Rein Velt
+        MISSION CONTROL v0.1beta. &copy; <?= date('Y') ?> Rein Velt.  All rights reserved.  This page was rendered in {elapsed_time} seconds. Environment: <?= ENVIRONMENT ?>. 
 
     </div>
 

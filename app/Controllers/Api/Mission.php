@@ -14,7 +14,7 @@ class Mission extends ResourceController
     // get all
     public function index(){
       $apiModel = new MissionModel();
-      $data = $apiModel->orderBy('id', 'DESC')->findAll();
+      $data = $apiModel->orderBy('start', 'ASC')->findAll();
       return $this->respond($data);
     }
 
@@ -101,9 +101,9 @@ class Mission extends ResourceController
     {
        //missions overview map
         $targetModel = new MissionTargetModel();
-        $targets = $targetModel->orderBy('id','asc')->findAll();
-        $missionModel = new MissionTargetModel();
-        $missions = $missionModel->orderBy('id','asc')->findAll();
+        $targets = $targetModel->orderBy('missionId,datum','asc')->findAll();
+        $missionModel = new MissionModel();
+        $missions = $missionModel->orderBy('start','asc')->findAll();
         $markup=view('components/maps/kml/missions',array("targets"=>$targets,"missions"=>$missions));
         $response = [
             'status'   => 200,

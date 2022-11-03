@@ -13,7 +13,7 @@ class Missiontarget extends ResourceController
     // get all
     public function index(){
       $apiModel = new MissionTargetModel();
-      $data = $apiModel->orderBy('id', 'DESC')->findAll();
+      $data = $apiModel->orderBy('datum', 'DESC')->findAll();
       return $this->respond($data);
     }
 

@@ -35,7 +35,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('app'                                 ,'App::index');
+$routes->get('app/missions'                         , 'App::missions');
 $routes->get('app/mission/(:num)'                   , 'App::mission/$1');
 $routes->get('app/missionform'                      , 'App::missionform');
 $routes->get('app/missionform/(:num)'               , 'App::missionform/$1');

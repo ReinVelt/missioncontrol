@@ -16,8 +16,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
 <style>
 footer { position:fixed; bottom:0px; left:0px; right:0px; height:32px; background:black; color:white;  font-size:xx-small;}
+
 </style>
 <script language="javascript">
 var baseUrl="<?= base_url(); ?>";
@@ -30,14 +34,14 @@ var baseUrl="<?= base_url(); ?>";
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">MISSION CONTROL</a>
+    <a class="navbar-brand" href="/app">MISSION CONTROL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Missions</a>
+          <a class="nav-link active" aria-current="page" href="/app/missions">Missions</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/app/devices">Status</a>
