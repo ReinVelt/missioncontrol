@@ -27,6 +27,7 @@ footer { position:fixed; bottom:0px; left:0px; right:0px; height:32px; backgroun
 .list-group-item .small { font-size:small; }
 .list-group-item .badge { border-radius:1em; border:solid 1px silver; color:black; ; font-size:x-small; }
 .list-group-item a {text-decoration:none;}
+.active  a { color:white;}
 
 </style>
 <script language="javascript">
@@ -39,21 +40,24 @@ var baseUrl="<?= base_url(); ?>";
 <header>
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/app"><span class="material-symbols-outlined">MISSION CONTROL</span></a>
+    <a class="navbar-brand" href="/app"><span class="material-symbols-outlined">R31N</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/app/missions"><span class="material-symbols-outlined">location</span><br>places</a>
+      <li class="nav-item">
+          <a class="nav-link  btn btn-outline-secondary" aria-current="page" href="/app/"><span class="material-symbols-outlined">home</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/app/devices"><span class="material-symbols-outlined">devices</span><br>devices</a>
+          <a class="nav-link  btn btn-outline-secondary" aria-current="page" href="/app/missions"><span class="material-symbols-outlined">place</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-secondary" href="/app/devices"><span class="material-symbols-outlined">airport_shuttle</span></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="material-symbols-outlined">action</span>
+          <a class="nav-link dropdown-togglev btn btn-outline-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="material-symbols-outlined">settings</span>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>

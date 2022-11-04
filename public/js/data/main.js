@@ -175,7 +175,7 @@ function updateMissionsList()
     {
         for (var i=0;i<data.missions.length;i++)
         {
-            var active=""; if (data.missions[i].finished<1) { active="selected";} else { active=""; }
+            var active=""; if (data.missions[i].finished<1) { active="active";} else { active=""; }
             html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" title="'+data.missions[i].description+'">';
             html=html+' <div class="d-flex w-100 justify-content-between">';
             html=html+'   <div class="mb-1 title" ><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
