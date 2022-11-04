@@ -85,27 +85,42 @@
    font-weight:bold;
 }
 
+#backgroundcontainer {transition: background-image 5s; }
+
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 <!-- CONTENT -->
 
-<section class="container-fluid"   style="position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh; background:url('/wallpaper/2953594.jpg'); background-attachment:fixed; background-size: cover; background-repeat: no-repeat; background-position: center bottom;">
+<section id="backgroundcolor" class="container-fluid"   style="background-color:black; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh; ">
+  
+</section>
+
+<section id="backgroundcontainer0" class="container-fluid"   style="background-color:black; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh; background:url('/wallpaper/dark1.jpg'); opacity:0; transition: background-image 5s; background-attachment:fixed; background-size: cover; background-repeat: no-repeat; background-position: center bottom;">
+  
+</section>
+
+<section id="backgroundcontainer1" class="container-fluid"   style="position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh; background:url('/wallpaper/dark1.jpg'); opacity:1; transition: background-image 5s; background-attachment:fixed; background-size: cover; background-repeat: no-repeat; background-position: center bottom;">
+  
+</section>
+
+
+<section id="content" class="container-fluid"   style=" position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh;">
    <canvas id="projector" style="width:100%; height:100%;">canvas not supported</canvas>
    <div id="logom" >M I S S I O N C O N T R O L
   </div>
     <div id="buttonsDiv"  >
       <center>
       <a class="btn btn-primary" onclick="$('#formModalLogin').modal('show');" title="accessability settings">
-        <span class="material-symbols-outlined" style="font-size:48px;">settings_accessibility</span>
+        <span class="material-symbols-outlined" >settings_accessibility</span>
         </a>
           <a class="btn btn-primary" onclick="$('#formModalLogin').modal('show');" title="login"  tooltip=ogin">
-        <span class="material-symbols-outlined" style="font-size:48px;">login</span>
+        <span class="material-symbols-outlined" >login</span>
         </a>
       
         <a class="btn btn-primary" onclick="$('#formModalLogin').modal('show');" title="Help">
-        <span class="material-symbols-outlined" style="font-size:48px;">Help</span>
+        <span class="material-symbols-outlined" >Help</span>
         </a>
       <center>
     </div>
@@ -140,6 +155,9 @@
         <div id="map" width="0" height="0"></map>
 
 <script language="javascript">
+
+var backgrounds=['dark1.jpg','dark2.jpg','dark3.jpg','dark4.jpg','dark5.jpg','dark6.jpg','dark7.jpg','dark8.jpg','dark9.jpg','dark10.jpg','dark11.jpg','dark12.jpg','dark13.jpg','dark14.jpg'];
+var backgroundseq=0;
 function initPage()
 {
   //if (!loggedIn)
@@ -147,6 +165,31 @@ function initPage()
   //$('#formModalLogin').modal({backdrop:'static'});
   $('#formModalLogin').modal('show');
   //}
+ setInterval(newbackground,100);
+}
+
+function newbackground()
+{
+  var l=backgrounds.length;
+  var b=document.getElementById("backgroundcontainer0");
+  var c=document.getElementById("backgroundcontainer1");
+  c.style.opacity=parseFloat(c.style.opacity)+0.01;
+  b.style.opacity=parseFloat(b.style.opacity)-0.01;
+  console.log(c.style.opacity);
+  if (c.style.opacity>1)
+  {
+    backgroundseq++;
+    if (backgroundseq==l ){backgroundseq=0;}
+    b.style.backgroundImage = c.style.backgroundImage;
+    c.style.backgroundImage = "url('"+baseUrl+"/wallpaper/"+backgrounds[backgroundseq]+"')";
+    c.style.opacity=0
+    b.style.opacity=1;
+    //c.style.backgroundImage = "url('"+baseUrl+"/wallpaper/"+backgrounds[backgroundseq]+"')";
+    
+    //$("#backgroundcontainer").css("background-image", "url('"+baseUrl+"/wallpaper/"+backgrounds[backgroundseq]+"')");
+   
+  }
+  //alert();
 
 }
 </script>

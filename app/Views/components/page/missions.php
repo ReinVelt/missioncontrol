@@ -2,15 +2,15 @@
 
 <!-- CONTENT -->
 
-<section class="container-fluid">
+<section class="container-fluid" >
    
     <div class="row">
         <div class="col-md-3">
-          <div class="container " >
+          <div class="container-fluid  rounded border" >
                
-                  <div class="container rounded border">
-                  <a href="#" class="" style="text-decoration:none; float:right; font-size:large " onclick="getMissionForm(0)"  data-bs-toggle="modal" data-bs-target="#formModal">+</a>
-                    <h4>MISSIONS</h4>
+                  <div class="container">
+                  <a href="#" class="" style="text-decoration:none; float:right; font-size:large " onclick="getMissionForm(0)"  data-bs-toggle="modal" data-bs-target="#formModal"><span class="material-symbols-outlined">add_location</span></a>
+                    <h5><span class="material-symbols-outlined">tour</span> MISSIONS</h5>
                    
                     
                   </div>

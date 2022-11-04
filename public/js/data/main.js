@@ -175,14 +175,14 @@ function updateMissionsList()
     {
         for (var i=0;i<data.missions.length;i++)
         {
-            html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start" >';
-            html=html+' <div class="d-flex w-100 justify-content-between" style="background-color:white;">';
-            html=html+'   <h5 class="mb-1"><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></h5>';
+            var active=""; if (data.missions[i].finished<1) { active="selected";} else { active=""; }
+            html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" title="'+data.missions[i].description+'">';
+            html=html+' <div class="d-flex w-100 justify-content-between">';
+            html=html+'   <div class="mb-1 title" ><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
             var cindex=(data.missions[i].id)%8;
-            html=html+'<div class="badge" style="border:solid 1px silver; border-radius:1em; background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')">play</div>';
-             html=html+' </div>';
-            html=html+' <p class="mb-1"  style="background-color:white;">'+data.missions[i].description+'</p>';
-            html=html+' <small >'+data.missions[i].start+'</small>';
+            html=html+'<div class="badge" style="background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
+            html=html+' </div>';
+            html=html+' <small>'+data.missions[i].start+'</small>';
             html=html+'</div>';
         }
         el.innerHTML=html;
