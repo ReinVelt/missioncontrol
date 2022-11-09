@@ -1,62 +1,47 @@
-/*
-import './style.css';
-import Map from './node_modules/ol/Map';
-import View from './node_modules/ol/View';
-import Stamen from './node_modules/ol/source/Stamen';
-import Feature from './node_modules/ol/Feature';
-import Geolocation from './node_modules/ol/Geolocation';
-import Point from './node_modules/ol/geom/Point';
-import {Circle as CircleStyle, Fill, Stroke, Style} from './node_modules/ol/style';
-import OSM from './node_modules/ol/source/OSM';
-import TileLayer from './node_modules/ol/layer/Tile';
-import VectorLayer from './node_modules/ol/layer/Vector';
-import {fromLonLat} from './node_modules/ol/proj';
-import KML from './node_modules/ol/format/KML';
-import VectorSource from './node_modules/ol/source/Vector';
-import XYZ from './node_modules/ol/source/XYZ';
-*/
 
-const vector = new ol.layer.Vector({
+const kmlLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: document.getElementById("map").getAttribute("data-kml"), //'http://localhost:8080/api/gpslog/kml/1',
+    url: document.getElementById("map").getAttribute("data-kml"),
     format: new ol.format.KML(),
-  }),
+  }), preload: Infinity
+});
+
+var satelliteLayer=new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 19
+  })
+});
+
+var labelLayer=new ol.layer.Tile({
+  source: new ol.source.Stamen({
+    layer: 'terrain-labels',
+    opacity: 0.5
+  })
+});
+
+var waterColorLayer=new ol.layer.Tile({
+  source: new ol.source.Stamen({
+    layer: 'watercolor',
+    opacity:0,
+    maxZoom:12
+  })
 });
 
 const map = new ol.Map({
   target: 'map',
   layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM(),
-      minZoom:19
-    })
-    ,
-   /* new ol.layer.Tile({
-      source: new ol.source.Stamen({
-        layer: 'watercolor',
-      }),
-    }), new ol.layer.Tile({
-      source: new ol.source.Stamen({
-        layer: 'terrain-labels',
-        maxZoom:14,
-        minZoom:12
-      }),
-    }),
-   */
-    new ol.layer.Tile({
-      source: new ol.source.XYZ({
-        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        maxZoom: 19
-      })
-    }),
-   
-   vector
+    satelliteLayer,
+    labelLayer,
+    kmlLayer
   ],
   view: new ol.View({
     center: ol.proj.fromLonLat([7,53]),
     zoom: 3
   })
 });
+
+labelLayer.setOpacity(0.3);
 
 const displayFeatureInfo = function (pixel) {
   const features = [];
@@ -86,8 +71,8 @@ map.on('click', function (evt) {
 });
 
 
-vector.once("change",function(e){
-  var extent=vector.getSource().getExtent();
+kmlLayer.once("change",function(e){
+  var extent=kmlLayer.getSource().getExtent();
   if (extent[0]!=Infinity)
   {
     map.getView().fit(extent);

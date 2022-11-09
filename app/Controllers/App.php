@@ -100,10 +100,10 @@ class App extends BaseController
         }
         else
         {
-            $gd=imagecreate(300,200);
+            $gd=imagecreate(1024,768);
         }
         header("Content-type: ".$row["mimetype"]);
-        imagescale($gd,300);
-        imagejpeg($gd);
+        $gd2=imagescale($gd,150,100);
+        imagejpeg($gd2);
     }
 }

@@ -106,7 +106,7 @@ function updateMissionMedia(data)
         {
          // var url=data[i].url.substring(10,100)
         
-            html=html+'<img src="/app/imageresize/'+data[i].id+'" style="max-height:100px; max-width:100%;">';
+            html=html+'<div class="thumbnail" style="float:left; border:solid 1px silver; border-radius:10px;" ><img src="/app/imageresize/'+data[i].id+'" style="max-height:10vh; max-width:100%; border:solid 4px white; border-radius:10px;"><br><a href="# style="position:absolute; left:-50px; top:-50px; " class="btn btn-sm"><span class="material-icons" style="font-size:x-small;">edit</span></a></div>';
           
         }
         el.innerHTML=html;
@@ -123,13 +123,16 @@ function updateMissiontargets(data)
       {
           for (var i=0;i<data.length;i++)
           {
-              html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start">';
+              var date=new Date(data[i].datum);
+              html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start border rounded" title="'+data[i].description+'">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
-              html=html+'   <h5 class="mb-1"><a href="/app/missiontarget/'+data[i].id+'">'+data[i].name+'</a></h5>';
-              html=html+'   <small><a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" class="material-icons" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">edit</a></small>';
+              html=html+'   <div class="mb-1 title"><a href="/app/missiontarget/'+data[i].id+'">'+data[i].name+'</a></div>';
+              html=html+'   <a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" style="font-size:18px; float:right;" class="material-icons" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">edit</a>';
               html=html+' </div>';
-              html=html+' <p class="mb-1">'+data[i].description+'</p>';
-              html=html+' <small>'+data[i].datum+'</small>';
+              html=html+  '<div class="subtitle">';
+              html=html+      date.getDate()+' ' + date.toLocaleString('default', { month: 'long' })+' '+date.getFullYear();
+              html=html+  '</div>';
+              html=html+  '<div class="description">'+data[i].description+'</div>'
               html=html+'</div>';
           }
           el.innerHTML=html;

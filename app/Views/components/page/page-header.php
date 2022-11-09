@@ -20,11 +20,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 <style>
 footer { position:fixed; bottom:0px; left:0px; right:0px; height:32px; background:black; color:white;  font-size:xx-small;}
 .list-group-item .title { font-size:large; font-weight:bold;}
 .list-group-item .description { font-size:small; }
-.list-group-item .small { font-size:small; }
+.list-group-item .subtitle { font-size:x-small; color:darkgray; }
 .list-group-item .badge { border-radius:1em; border:solid 1px silver; color:black; ; font-size:x-small; }
 .list-group-item a {text-decoration:none;}
 .active  a { color:white;}

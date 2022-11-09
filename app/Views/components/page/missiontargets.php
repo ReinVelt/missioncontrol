@@ -19,12 +19,16 @@
 
         
         </div>
-        <div class="col-md-6">
-            <div class="map" id="map" style="width:100%; height:90vh;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
+        <div class="col-md-9">
+            <div class="map" id="map" style="width:100%; height:80vh;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
             <div id="info"></div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-md-3">
-        <a data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>); return false;">upload</a>
+</div>
+        <div class="col-md-9">
+        <a style="float:right;" data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>); return false;">upload</a>
         <div class="container-fluid" id="missionMediaList"></div>
         </div>
 

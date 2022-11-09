@@ -76,16 +76,32 @@ function highlightMap(args)
 {
   var lat=0;
   var lon=0;
+  var oldlat=0;
+  var oldlon=0;
   var c=args.length;
   flyToQueue=[];
   for (var i=0;i<c;i++)
   {
+  
    lat=parseFloat(args[i].latitude);
    lon=parseFloat(args[i].longitude);
-   flyToQueue.push(ol.proj.fromLonLat([lon, lat]));
-   
+   var diflat=lat-oldlat;
+  var diflon=lon-oldlon;
+  var dist=Math.sqrt((diflat*diflat)+(diflon*diflon));
+  var dur=dist*30000;
+  if (dur<8000){ dur=8000;}
+  if (dur>20000) { dur=20000;}
+  if (oldlat==0) { dist=1;}
+ 
+  var zoom=Math.round(14-(dist*1.2));
+  if (zoom<4) { zoom=4;}
+  if (zoom>14){ zoom=14;}
+  console.log("zoom",dist,zoom);
+   flyToQueue.push({"lonlat":ol.proj.fromLonLat([lon, lat]),"zoom":zoom,"duration":dur});
+   oldlat=lat;
+   oldlon=lon;
   }
-  
+   flyToQueue.reverse();
    playFlyToQueue();
  
 }
@@ -111,12 +127,13 @@ function highlightMap(args)
 
 
 function flyTo(location, done) {
-  const duration = 4000;
+  const duration = 12000;
   var view=map.getView();
-  const zoom = 8; //view.getZoom();
+  const zoom = view.getZoom();
   let parts = 2;
   let called = false;
   function callback(complete) {
+    console.log(location);
     --parts;
     if (called) {
       return;
@@ -126,30 +143,28 @@ function flyTo(location, done) {
       done(complete);
     }
   }
+  
   view.animate(
     {
-      center: location,
-      duration: duration,
-      zoom:zoom
+      center: location.lonlat,
+      duration:location.duration,
+      zoom:location.zoom
     },
     callback
   );
+  
   view.animate(
     {
-      center: location,
-      duration: duration,
-      zoom:14
+      center: location.lonlat,
+      duration: location.duration,
+      zoom:location.zoom
     },
     callback
   );
-  view.animate(
-    {
-      center: location,
-      duration: duration,
-      zoom:10
-    },
-    callback
-  );
+
+  
+ 
+  
  
 }
 
@@ -170,19 +185,41 @@ function updateMissionsList()
 {
     var el=document.getElementById("missionsList");
     var colors=['0000ff','00ff00','ccccff','ff88cc','cc00ff','ff0000','ffffff','ffff00'];
+    var pins=[
+      'http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/pink-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/purple-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png' 
+  ];
     var html="";
     if (el)
     {
         for (var i=0;i<data.missions.length;i++)
         {
-            var active=""; if (data.missions[i].finished<1) { active="active";} else { active=""; }
-            html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" title="'+data.missions[i].description+'">';
-            html=html+' <div class="d-flex w-100 justify-content-between">';
-            html=html+'   <div class="mb-1 title" ><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
+          var startdate=new Date(data.missions[i].start);
+          var enddate=new Date(data.missions[i].end);
             var cindex=(data.missions[i].id)%8;
-            html=html+'<div class="badge" style="background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
-            html=html+' </div>';
-            html=html+' <small>'+data.missions[i].start+'</small>';
+            var active=""; if (data.missions[i].finished<1) { active="active";} else { active=""; }
+            html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" >';
+            html=html+  '<div class="d-flex w-100 justify-content-between">';
+            html=html+     '<div class="mb-1 title" ><img src="'+pins[cindex]+'" style="width:25px; float:left; "><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
+             html=html+     '<div class="badge" style="background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
+            html=html+  '</div>';
+            html=html+  '<div class="subtitle">';
+            html=html+ startdate.toLocaleString('default', { month: 'long' })+' '+startdate.getFullYear();
+            if (enddate.getFullYear()>2000)
+            {
+              html=html+' - ';
+              html=html+ enddate.toLocaleString('default', { month: 'long' })+' '+enddate.getFullYear();
+            }
+            html=html+  '</div>';
+            html=html+     '<div class="description">'+data.missions[i].description+'</div>'
+         
+            
             html=html+'</div>';
         }
         el.innerHTML=html;

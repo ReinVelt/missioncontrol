@@ -14,7 +14,7 @@ class Mission extends ResourceController
     // get all
     public function index(){
       $apiModel = new MissionModel();
-      $data = $apiModel->orderBy('start', 'ASC')->findAll();
+      $data = $apiModel->orderBy('start', 'asc')->findAll();
       return $this->respond($data);
     }
 

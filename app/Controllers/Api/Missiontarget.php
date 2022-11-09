@@ -3,6 +3,7 @@
 namespace App\Controllers\Api;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use App\Models\GpslogModel;
 use App\Models\MissionTargetModel;
 
 class Missiontarget extends ResourceController
@@ -13,13 +14,13 @@ class Missiontarget extends ResourceController
     // get all
     public function index(){
       $apiModel = new MissionTargetModel();
-      $data = $apiModel->orderBy('datum', 'DESC')->findAll();
+      $data = $apiModel->orderBy('datum', 'asc')->findAll();
       return $this->respond($data);
     }
 
     public function mission($missionId){
         $apiModel = new MissionTargetModel();
-        $data = $apiModel->where('missionId', $missionId)->findAll();
+        $data = $apiModel->where('missionId', $missionId)->orderBy('datum', 'asc')->findAll();
         return $this->respond($data);
       }
 
@@ -117,8 +118,11 @@ class Missiontarget extends ResourceController
     {
        
         $apiModel = new MissionTargetModel();
-        $data = $apiModel->where('missionId', $missionId)->findAll();
-        $markup=view('components/maps/kml/missiontargets',array("data"=>$data));
+        $data = $apiModel->where('missionId', $missionId)->orderBy('datum','asc')->findAll();
+
+        $apiModel=new GpslogModel();
+        $gpslog = $apiModel->where('missionId', $missionId)->orderBy('datum','asc')->findAll();
+        $markup=view('components/maps/kml/missiontargets',array("data"=>$data,"gpslog"=>$gpslog));
         $response = [
             'status'   => 200,
             'error'    => null,
