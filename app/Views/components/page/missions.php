@@ -1,7 +1,7 @@
 <?= view('components/page/page-header',array("pagename"=>$pagename)); ?>
 
 <!-- CONTENT -->
-<div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:32px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="http://localhost:8080/api/mission/kml" ></div> 
+<div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:32px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="<?= base_url(); ?>/api/mission/kml" ></div> 
 
    
     <div style="position:absolute; top:50px; left:0px; width:20vw; z-index:1000;">

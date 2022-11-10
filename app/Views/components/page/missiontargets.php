@@ -9,7 +9,7 @@
 
         
         
-            <div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:150px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
+            <div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:150px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="<?= base_url(); ?>/api/missiontarget/kml/<?= $missionId; ?>"></div> 
             <div id="info"></div>
 
             <div class="border rounded"  style="position:absolute; top:50px; left:0; width:20vw; z-index:200; background:black; opacity:0.8;  padding:1em; " >
