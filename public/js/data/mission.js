@@ -124,16 +124,17 @@ function updateMissiontargets(data)
           for (var i=0;i<data.length;i++)
           {
               var date=new Date(data[i].datum);
-              html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start border rounded" title="'+data[i].description+'">';
+              html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start rounded" data-bs-toggle="tooltip" style="border:solid 3px black !important;" title="'+data[i].description+'" onclick="highlightMap('+data[i].latitude+','+data[i].longitude+')">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
-              html=html+'   <div class="mb-1 title"><a href="/app/missiontarget/'+data[i].id+'">'+data[i].name+'</a></div>';
-              html=html+'   <a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" style="font-size:18px; float:right;" class="material-icons" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">edit</a>';
+              html=html+'   <div class="mb-1 title"><img src="http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png" style="width:25px; float:left;"><a href="#'+data[i].id+'">'+data[i].name+'</a></div>';
+              html=html+'   <a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" style="font-size:18px; float:right;" class="material-icons hover" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">settings</a>';
               html=html+' </div>';
+              html=html+'<div class="missioninfo">'
               html=html+  '<div class="subtitle">';
               html=html+      date.getDate()+' ' + date.toLocaleString('default', { month: 'long' })+' '+date.getFullYear();
               html=html+  '</div>';
               html=html+  '<div class="description">'+data[i].description+'</div>'
-              html=html+'</div>';
+              html=html+'</div></div>';
           }
           el.innerHTML=html;
           console.log("missionstargetslist updated");
@@ -145,6 +146,84 @@ function updateMissiontargets(data)
 
 
 
+function highlightMap(lat,lon)
+{
+ 
+  var zoom=14;
+  var dur=10000;
+  flyToQueue=[];
+ 
+  
+   
+  
+   flyToQueue.push({"lonlat":ol.proj.fromLonLat([lon, lat]),"zoom":zoom,"duration":dur});
+ 
+   flyToQueue.reverse();
+   playFlyToQueue();
+ 
+}
+  
+ function playFlyToQueue()
+ {
+   
+   if (flyToQueue.length>0)
+   {
+      if (flyToQueue.length>1)
+      {
+        flyTo(flyToQueue.pop(),function() { playFlyToQueue(); });
+      }
+      else
+      {
+        flyTo(flyToQueue.pop(),function() { });
+        flyToQueue=[];
+      }
+   }
+ }
+
+
+
+
+function flyTo(location, done) {
+  const duration = 12000;
+  var view=map.getView();
+  const zoom = view.getZoom();
+  let parts = 2;
+  let called = false;
+  function callback(complete) {
+    console.log(location);
+    --parts;
+    if (called) {
+      return;
+    }
+    if (parts === 0 || !complete) {
+      called = true;
+      done(complete);
+    }
+  }
+  
+  view.animate(
+    {
+      center: location.lonlat,
+      duration:location.duration,
+      zoom:location.zoom
+    },
+    callback
+  );
+  
+  view.animate(
+    {
+      center: location.lonlat,
+      duration: location.duration,
+      zoom:location.zoom
+    },
+    callback
+  );
+
+  
+ 
+  
+ 
+}
 
 
 

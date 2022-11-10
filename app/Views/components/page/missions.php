@@ -1,12 +1,11 @@
-<?= view('components/page/page-header'); ?>
+<?= view('components/page/page-header',array("pagename"=>$pagename)); ?>
 
 <!-- CONTENT -->
+<div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:32px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="http://localhost:8080/api/mission/kml" ></div> 
 
-<section class="container-fluid" >
    
-    <div class="row">
-        <div class="col-md-3">
-          <div class="container-fluid  rounded border" >
+    <div style="position:absolute; top:50px; left:0px; width:20vw; z-index:1000;">
+      
                
                   <div class="container">
                   <a href="#" class="" style="text-decoration:none; float:right; font-size:large " onclick="getMissionForm(0)"  data-bs-toggle="modal" data-bs-target="#formModal"><span class="material-symbols-outlined">add_location</span></a>
@@ -17,22 +16,21 @@
               
               
                
-            <div id="missionsList" class="list-group" style="max-height:85vh; overflow:scroll;">
+            <div id="missionsList" class="list-group" >
             </div>
-          </div>
-        </div>
-        <div class="col-md-9 col-auto">
-            <div class="map" id="map" style="width:100%; height:90vh" data-kml="http://localhost:8080/api/mission/kml" ></div> 
-            <div id="info"></div>
-        </div>
-       >
+        
+       
+
+       
+      
 
     </div>
  
-        
+                 
+<!--<div class="timeline" id="timeline" style="position:absolute; bottom:0px; width:20vw; left:0vw; height:40vh;; z-index:1001;"></div>-->
     
 
-</section>
+
 
 
 <!-- Modal -->

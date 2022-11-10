@@ -11,22 +11,22 @@ class App extends BaseController
     public function index()
     {
         header('Access-Control-Allow-Origin: *');
-        return view('components/page/intro');
+        return view('components/page/intro',array("pagename"=>"missions"));
     }
 
     public function missions()
     {
-        return view('components/page/missions');
+        return view('components/page/missions',array("pagename"=>"missions"));
     }
 
     public function mission($missionId)
     {
-        return view('components/page/missiontargets',array("missionId"=>$missionId));
+        return view('components/page/missiontargets',array("missionId"=>$missionId,"pagename"=>"missions"));
     }
 
     public function devices()
     {
-        return view('components/page/devices');
+        return view('components/page/devices',array("pagename"=>"devices"));
     }
 
     public function missionForm($missionId=null)

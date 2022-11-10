@@ -1,35 +1,38 @@
-<?= view('components/page/page-header',array("missionId"=>$missionId)); ?>
+<?= view('components/page/page-header',array("missionId"=>$missionId,"pagename"=>$pagename)); ?>
 
 <!-- CONTENT -->
 
-<section class="container-fluid">
+
    
-    <div class="row">
-        <div class="col-md-3">
-            <div class="panel border rounded">
-                <div class="panel-title">MISSION <?= $missionId; ?></div>
-                <small><a data-bs-toggle="modal" data-bs-target="#formModalMission" class="material-icons" onclick="getMissionForm(<?= $missionId; ?>); return false;">edit</a></small>
-         
-                <div id="missionDetails" class="panel-body">---</div>
-            </div>   
-            <div class="panel border ">
-                <div class="panel-title">MISSION TARGETS <a href="#" onclick="getMissiontargetForm(<?= $missionId; ?>,0);" data-bs-toggle="modal" data-bs-target="#formModalMissionTarget">+</a></div>
-                <div id="missionTargets" class="panel-body">---</div>
-            </div>   
+   
+          
 
         
-        </div>
-        <div class="col-md-9">
-            <div class="map" id="map" style="width:100%; height:80vh;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
+        
+            <div class="map" id="map" style="position:absolute; top:50px; left:20vw; right:10px; bottom:150px;  border:solid 1px darkgray; border-radius:10px; overflow:hidden;" data-kml="http://localhost:8080/api/missiontarget/kml/<?= $missionId; ?>"></div> 
             <div id="info"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-</div>
-        <div class="col-md-9">
-        <a style="float:right;" data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>); return false;">upload</a>
-        <div class="container-fluid" id="missionMediaList"></div>
+
+            <div class="border rounded"  style="position:absolute; top:50px; left:0; width:20vw; z-index:200; background:black; opacity:0.8;  padding:1em; " >
+                <div class="panel-title">MISSION <?= $missionId; ?> <a href="/app/missions/"  style="float:right; "><span class="material-icons" data-bs-toggle="tooltip"  title="go back to missions">arrow_left</span></a></div>
+                <small style="float:right;"><a data-bs-toggle="modal" title="edit" data-bs-target="#formModalMission" class="material-icons" onclick="getMissionForm(<?= $missionId; ?>); return false;">settings</a></small>
+         
+                <div id="missionDetails" class="panel-body">---</div>
+              
+              <div class="container" style="margin-top:1em" >
+                <div class="panel  ">
+                    <div class="panel-title">TARGETS 
+                      <a href="#" onclick="getMissiontargetForm(<?= $missionId; ?>,0);" style="float:right" data-bs-toggle="modal" data-bs-target="#formModalMissionTarget">
+                        <span class="material-icons" data-bs-toggle="tooltip" title="add mission objective">add_location</span>
+                      </a>
+                    </div>
+                    <div id="missionTargets" class="panel-body">---</div>
+                </div>   
+              </div>
+            </div> 
+    
+        <div class="col-md-9" style="position:absolute; bottom:0px; left:20vw; right:0px; height:130px; overflow:hidden; z-index:200; " >
+          <a style="float:right;" data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>); return false;">upload</a>
+          <div class="container-fluid" id="missionMediaList" style="padding-top:-100px"></div>
         </div>
 
     </div>
@@ -37,7 +40,7 @@
         
     
 
-</section>
+
 
 
 

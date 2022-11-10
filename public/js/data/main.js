@@ -16,6 +16,7 @@ function responseMissionHandler () {
   var jsonData = JSON.parse(this.responseText);
   data.missions=jsonData;
   updateMissionsList();
+  //updateTimeline();
 };
 
 function responseMissionDetailHandler () {
@@ -209,22 +210,93 @@ function updateMissionsList()
             html=html+     '<div class="mb-1 title" ><img src="'+pins[cindex]+'" style="width:25px; float:left; "><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
              html=html+     '<div class="badge" style="background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
             html=html+  '</div>';
-            html=html+  '<div class="subtitle">';
-            html=html+ startdate.toLocaleString('default', { month: 'long' })+' '+startdate.getFullYear();
+            html=html+  '<div class="missioninfo">';
+            html=html+    '<div class="subtitle">';
+            html=html+    startdate.toLocaleString('default', { month: 'long' })+' '+startdate.getFullYear();
             if (enddate.getFullYear()>2000)
             {
               html=html+' - ';
               html=html+ enddate.toLocaleString('default', { month: 'long' })+' '+enddate.getFullYear();
             }
-            html=html+  '</div>';
-            html=html+     '<div class="description">'+data.missions[i].description+'</div>'
-         
-            
+            html=html+    '</div>';
+            html=html+     '<div class="description">'+data.missions[i].description+'...</div>';
+
+          html=html+'</div>';
             html=html+'</div>';
+
+           
         }
         el.innerHTML=html;
         console.log("missionslist updated");
     }
+}
+
+function updateTimeline()
+{
+    var el=document.getElementById("timeline");
+    var colors=['0000ff','00ff00','ccccff','ff88cc','cc00ff','ff0000','ffffff','ffff00'];
+    var pins=[
+      'http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/pink-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/purple-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png',
+      'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png' 
+  ];
+    var html="";
+    if (el)
+    {
+      html=html+'<div class="timeline__wrap">';
+      html=html+'<div class="timeline__items">';
+        for (var i=0;i<data.missions.length;i++)
+        {
+          var startdate=new Date(data.missions[i].start);
+          var enddate=new Date(data.missions[i].end);
+            var cindex=(data.missions[i].id)%8;
+            var active=""; if (data.missions[i].finished<1) { active="active";} else { active=""; }
+            html=html+'<div class="timeline__item" >';
+            html=html+  '<div class="timeline__content">';
+            html=html+    '<div class="timeline_date subtitle">';
+            html=html+    startdate.toLocaleString('default', { month: 'long' })+' '+startdate.getFullYear();
+            if (enddate.getFullYear()>2000)
+            {
+              html=html+'&nbsp;-&nbsp;';
+              html=html+ enddate.toLocaleString('default', { month: 'long' })+' '+enddate.getFullYear();
+            }
+            html=html+    '</div>'; //subtitle
+              html=html+     '<div class="title" ><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
+            html=html+  '<div class="missioninfo">';
+            html=html+    '<div class="subtitle">';
+            html=html+    startdate.toLocaleString('default', { month: 'long' })+' '+startdate.getFullYear();
+            if (enddate.getFullYear()>2000)
+            {
+              html=html+' - ';
+              html=html+ enddate.toLocaleString('default', { month: 'long' })+' '+enddate.getFullYear();
+            }
+            html=html+    '</div>'; //sub
+            html=html+     '<div class="description">'+data.missions[i].description+'...</div>';
+
+          html=html+'</div>'; //missioninfo
+            html=html+  '</div>';
+           
+
+          html=html+'</div>'; //item
+
+           
+        }
+        html=html+'</div>'; //timeline-items
+        html=html+'</div>'; //timeline-wrap
+        el.innerHTML=html;
+        timeline(document.querySelectorAll('.timeline'), {
+          mode: 'horizontal',
+          //forceVerticalWidth: 130
+          visibleItems:3
+        });
+        console.log("timeline updated");
+    }
+   
 }
 
 
