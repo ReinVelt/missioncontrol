@@ -9,7 +9,7 @@
    
     <link rel="stylesheet" href="/vendor_ext/bootstrap-5.2.2-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="/vendor_ext/timeline-master/dist/css/timeline.min.css"/>
-    <script src="/vendor_ext/timeline-master/dist/js/timeline.min.js"></script>
+    <script src="/vendor_ext/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
