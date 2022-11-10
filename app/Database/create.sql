@@ -21,7 +21,7 @@ CREATE TABLE MISSION(
     end datetime,
     finished boolean
 );
-INSERT INTO MISSION VALUES (NULL,'Test mission to Tikbuktu','test','data',NULL,NULL,NULL)
+INSERT INTO MISSION VALUES (NULL,'Test mission to Tikbuktu','test','data',NULL,NULL,NULL);
 
 
 CREATE TABLE MISSION_TARGETS(
