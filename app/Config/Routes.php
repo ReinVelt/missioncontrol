@@ -17,7 +17,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('App');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -35,7 +35,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('app'                                 ,'App::index');
+$routes->get('app'                                   ,'App::index');
 $routes->get('app/missions'                         , 'App::missions');
 $routes->get('app/mission/(:num)'                   , 'App::mission/$1');
 $routes->get('app/missionform'                      , 'App::missionform');
