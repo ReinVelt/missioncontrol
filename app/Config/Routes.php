@@ -57,8 +57,8 @@ $routes->post('api/media/upload/(:num)',            'Api\Media::upload/$1');
 $routes->get('api/media/mission/(:num)',            'Api\Media::mission/$1');
 
 //RESTAPI ROUTING
-$routes->resource('api/mission',                    ['controller' => 'Api\Mission']);
-$routes->resource('api/missiontarget',              ['controller' => 'Api\Missiontarget']);
+$routes->resource('api/mission',                    ['controller' =>  'Api\Mission']);
+$routes->resource('api/missiontarget',              ['controller' =>  'Api\Missiontarget']);
 $routes->resource('api/gpslog',                     ['controller'  => 'Api\Gpslog']);
 $routes->resource('api/media',                      ['controller'  => 'Api\Media']);
 
