@@ -204,7 +204,7 @@ function updateMissionsList()
           var startdate=new Date(data.missions[i].start);
           var enddate=new Date(data.missions[i].end);
             var cindex=(data.missions[i].id)%8;
-            var active=""; if (data.missions[i].finished<1) { active="active";} else { active=""; }
+            var active=""; if (false) { active="active";} else { active=""; }
             html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" >';
             html=html+  '<div class="d-flex w-100 justify-content-between">';
             html=html+     '<div class="mb-1 title" ><img src="'+pins[cindex]+'" style="width:25px; float:left; "><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
