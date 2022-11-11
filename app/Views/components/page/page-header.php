@@ -35,7 +35,7 @@ footer { position:fixed; bottom:0px; left:0px; right:0px; height:20px;  color:wh
 .active  a { color:white;}
 .list-group-item * .hover {opacity:0}
 .list-group-item:hover * .hover {opacity:1;}
-.title { font-weight:bold; font-size:large;}
+.title { font-weight:bold; font-size:normal;}
 .navbar-brand {font-size:small; font-weight:bold; color:yellow;}
 .material-symbols-outlined { font-size:large; padding:2px; margin:0px;} 
 .material-icons { vertical-align:sub; font-size:16px; font-weight:normnal; color:white;}
