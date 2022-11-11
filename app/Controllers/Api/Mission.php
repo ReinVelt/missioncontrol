@@ -30,7 +30,8 @@ class Mission extends ResourceController
             'finished'  => $this->request->getVar('finished'),
         ];
         log_message(1,print_r($_POST,true));
-        $apiModel->insert($data);
+        $created=$apiModel->insert($data);
+        log_message(1,print_r($created.true));
         $response = [
           'status'   => 201,
           'error'    => null,
