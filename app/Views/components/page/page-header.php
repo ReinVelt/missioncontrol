@@ -27,7 +27,7 @@
   body, td, div, span, a, .navbar { color:silver;}
 footer { position:fixed; bottom:0px; left:0px; right:0px; height:20px;  color:white;  font-size:xx-small; z-index:2000; opacity:0.7; text-align:center;}
 .list-group-item { background: #444444; color:#cccccc;}
-.list-group-item .title { font-size:large; font-weight:bold; color:White;}
+.list-group-item .title { font-size:normal; font-weight:bold; color:White;}
 .list-group-item .description { font-size:x-small;  overflow:hidden;}
 .list-group-item .subtitle { font-size:x-small; color:darkgray; }
 .list-group-item .badge { border-radius:1em; border:solid 1px silver; color:black; ; font-size:x-small; }
