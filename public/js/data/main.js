@@ -208,7 +208,7 @@ function updateMissionsList()
             html=html+'<div id="missionsListItem'+data.missions[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start '+active+'" >';
             html=html+  '<div class="d-flex w-100 justify-content-between">';
             html=html+     '<div class="mb-1 title" ><img src="'+pins[cindex]+'" style="width:25px; float:left; "><a href="/app/mission/'+data.missions[i].id+'">'+data.missions[i].name+'</a></div>';
-             html=html+     '<div class="badge" style="background-color:#'+colors[cindex]+'" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
+             html=html+     '<div class="badge" onclick="highlightMission('+data.missions[i].id+')"><span class="material-symbols-outlined">play_circle</span></div>';
             html=html+  '</div>';
             html=html+  '<div class="missioninfo">';
             html=html+    '<div class="subtitle">';
