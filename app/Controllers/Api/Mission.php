@@ -31,15 +31,15 @@ class Mission extends ResourceController
         ];
        
         $created=$apiModel->insert($data);
-        log_message(1,"return: .print_r($created,true));
+        log_message(1,"return: ".print_r($created,true));
         $response = [
           'status'   => 201,
           'error'    => null,
           'messages' => [
               'success' => 'Mission created'
           ]
-      ];
-      return $this->respondCreated($response);
+         ];
+        return $this->respondCreated($response);
     }
 
     // single
