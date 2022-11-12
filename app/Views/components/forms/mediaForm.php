@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         <label for="media_name">Name</label>
-        <input name="name" type="text" class="form-control" id="media_name" aria-describedby="media_name_help" placeholder="Enter  name" value="">
+        <input name="name" type="text" class="form-control" id="media_name" aria-describedby="media_name_help" placeholder="Enter  name" value="<?= $data["name"]; ?>">
     </div>
 
     <div class="form-group">
@@ -27,25 +27,26 @@
 
     <div class="form-group">
         <label for="media_datum">Date</label>
-        <input name="datum" type="date" class="form-control" id="media_datum" aria-describedby="mission_start_help" placeholder="Date and time" value="">
+        <input name="datum" type="date" class="form-control" id="media_datum" aria-describedby="mission_start_help" placeholder="Date and time" value="<?= $data["datum"]; ?>">
     </div>
+    <div class="form-group">
+            <div id="coordinatemediacontainer"  class="coordinatepicker" width="100%" height="200" style="width:100%; height:200px" data-kml="<?= base_url().'/api/missiontarget/kml/'.$missionId; ?>"></div>
+            <label for="coordinate">Coordinate</label>
+            <input name="coordinate" type="text" class="form-control" id="coordinatemedia" aria-describedby="missiontarget_coordinate_help" placeholder="Enter coordinate" value="<?= $data["latitude"]; ?>,<?= $data["longitude"]; ?>">
+        </div>
 
     <div class="hidden border rounded">
         <div class="form-group">
             <label for="media_mimetype">Mimetype</label>
-            <input name="mimetype" type="text"   class="form-control" id="media_mimetype" aria-describedby="mission_start_help" placeholder="Mimetype" value="">
+            <input name="mimetype" type="text"   class="form-control" id="media_mimetype" aria-describedby="mission_start_help" placeholder="Mimetype" value="<?= $data["mimetype"]; ?>">
         </div>
 
         <div class="form-group">
             <label for="media_filesize">Filesize</label>
-            <input name="filesize" type="text"   class="form-control" id="media_filesize" aria-describedby="mission_start_help" placeholder="File size" value="">
+            <input name="filesize" type="text"   class="form-control" id="media_filesize" aria-describedby="mission_start_help" placeholder="File size" value="<?= $data["filesize"]; ?>">
         </div>
     
-        <div class="form-group">
-        <div id="coordinatemediacontainer"  class="coordinatepicker" width="100%" height="200" style="width:100%; height:200px" data-kml="<?= base_url().'/api/missiontarget/kml/'.$missionId; ?>"></div>
-            <label for="coordinate">Coordinate</label>
-            <input name="coordinate" type="text" class="form-control" id="coordinatemedia" aria-describedby="missiontarget_coordinate_help" placeholder="Enter coordinate" value="<?= $data["latitude"]; ?>,<?= $data["longitude"]; ?>">
-        </div>
+        
     </div>
 
     <div class="modal-footer">
