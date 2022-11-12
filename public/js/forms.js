@@ -327,15 +327,15 @@ function mediaEditForm()
       data:     data, //formData,
       dataType: datatype,
       cache: false,
-      encode:encode
+      encode: encode,
       contentType: contenttype,
       processData:processdata,
       success: function( response ) {
           console.log(response);
           document.getElementById("mediaForm").reset(); 
           $('#formModalMedia').modal('hide');
-          //getMissionTargetData(parseInt(form.elements.missionId.value));  
-          location.reload();   
+          getMissionMedia(parseInt(form.elements.missionId.value));  
+          //location.reload();   
       }
     });
   }
