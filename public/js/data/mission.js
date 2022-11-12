@@ -108,7 +108,7 @@ function updateMissionMedia(data)
         
             html=html+'<div class="thumbnail" style="float:left; border:solid 1px silver; border-radius:10px;">\
                           <img src="/app/imageresize/'+data[i].id+'" style="max-height:10vh; max-width:100%; border:solid 4px white; border-radius:10px;">\
-                          <a title="edit" onclick="getMediaForm('+data[i].missionId+','+data[i].id+'); return false;" class="btn btn-sm">\
+                          <a title="edit" data-bs-toggle="modal" data-bs-target="#formModalMedia"  onclick="getMediaForm('+data[i].missionId+','+data[i].id+'); return false;" class="btn btn-sm">\
                             <span class="material-icons" style="font-size:x-small;">edit</span>\
                           </a>\
                       </div>';
