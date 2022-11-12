@@ -5,7 +5,7 @@ function coordinateselectorInit(elementId)
 {
 const vector = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: document.getElementById(elementId).getAttribute("data-kml"), //'http://localhost:8080/api/gpslog/kml/1',
+    url: document.getElementById(elementId).getAttribute("data-kml"), 
     format: new ol.format.KML(),
   }),
 });
