@@ -292,9 +292,17 @@ function mediaEditForm()
   submitHandler: function(form) {
     //insert(POST) works OK puit update/put does not receive fields. whats comes in?
     console.log("form",form);
+    var iid=form.elements.id.value;
+   
     var submitMethod="POST";
     var missionId=form.elements.missionId.value;
     var submitURL="/api/media/upload/"+missionId;
+    if (iid>0)
+    {
+      var submitMethod="UPDATET";
+      var missionId=form.elements.missionId.value;
+      var submitURL="/api/media/"+missionId;
+    }
     
    
     $('#mediaFormSubmit').html('Sending..');
