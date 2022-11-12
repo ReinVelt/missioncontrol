@@ -48,10 +48,10 @@ class Media extends ResourceController
                     $fields = [
                         'userId'=>1,
                         'missionId'=>$missionId,
-                        'longitude'=>0,
-                        'latitude'=>0,
-                        'name' => $file->getName(),
-                        'description'  => '',
+                        'longitude'=>$this->request->getVar("longitude"),
+                        'latitude'=>$this->request->getVar("latitude"),
+                        'name' => $this->request->getVar("name"),
+                        'description'  => $this->request->getVar("description"),
                         'mimetype'  => $r->getMimeType(),
                         'filesize'  => $r->getSize(),
                         'uri'  => $filePath,
@@ -93,7 +93,7 @@ class Media extends ResourceController
             'description'  => $this->request->getVar('description'),
             'mimetype'  => $metadata->getMimeType(),
             'filesize'  => $metadata->getSize(),
-            'url'  => $this->request->getVar('url'),
+            'uri'  => $this->request->getVar('uri'),
             'datum'  => $this->request->getVar('datum')
         ];
       
