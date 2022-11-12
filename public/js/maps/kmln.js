@@ -18,7 +18,7 @@ import XYZ from './node_modules/ol/source/XYZ';
 
 const vector = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: document.getElementById("map").getAttribute("data-kml"), //'http://localhost:8080/api/gpslog/kml/1',
+    url: document.getElementById("map").getAttribute("data-kml"), 
     format: new ol.format.KML(),
   }),
 });
