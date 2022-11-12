@@ -307,10 +307,10 @@ function mediaEditForm()
       submitMethod="PUT";
       missionId=form.elements.missionId.value;
       submitURL="/api/media/"+iid;
-      datatype="json";
-      contenttype="application/json";;
-      processdata=true;
-      data=JSON.stringify(form);
+     // datatype="text";
+      //contenttype="application/json";;
+     // processdata=true;
+     // data=JSON.stringify(form);
     }
     
    
