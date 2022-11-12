@@ -297,11 +297,17 @@ function mediaEditForm()
     var submitMethod="POST";
     var missionId=form.elements.missionId.value;
     var submitURL="/api/media/upload/"+missionId;
+    var datatype="text";
+    var contenttype=false;
+    var processdata=false;
     if (iid>0)
     {
-      var submitMethod="PUT";
-      var missionId=form.elements.missionId.value;
-      var submitURL="/api/media/"+iid;
+      submitMethod="PUT";
+      missionId=form.elements.missionId.value;
+      submitURL="/api/media/"+iid;
+      datatype="json";
+      contentype="json";
+      processdata=true;
     }
     
    
@@ -315,16 +321,16 @@ function mediaEditForm()
       url:      submitURL,
       type:     submitMethod,
       data:     data, //formData,
-      dataType: 'text',
+      dataType: datatype,
       cache: false,
-      contentType: false,
-      processData:false,
+      contentType: contenttype,
+      processData:processdata,
       success: function( response ) {
           console.log(response);
           document.getElementById("mediaForm").reset(); 
           $('#formModalMedia').modal('hide');
           //getMissionTargetData(parseInt(form.elements.missionId.value));  
-          //location.reload();   
+          location.reload();   
       }
     });
   }

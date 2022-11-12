@@ -52,7 +52,7 @@ class Media extends ResourceController
                     {
                         $coordinate=explode(',',$this->request->getVar('coordinate'));
                     }
-                    
+
                     $fields = [
                         'userId'=>1,
                         'missionId'=>$missionId,
@@ -144,8 +144,8 @@ class Media extends ResourceController
         }
         $data = [
 
-            'userId'=>$this->request->getVar("userId"),
-            'missionId'=>$this->request->getVar("missionId"),
+            'userId'=>$row["userId"],
+            'missionId'=>$row["missionId"],
             'longitude'=>$coordinate[1],
             'latitude'=>$coordinate[0],
             'name' => $this->request->getVar('name'),
