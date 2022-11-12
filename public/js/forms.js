@@ -299,7 +299,7 @@ function mediaEditForm()
     var submitURL="/api/media/upload/"+missionId;
     if (iid>0)
     {
-      var submitMethod="UPDATET";
+      var submitMethod="UPDATE";
       var missionId=form.elements.missionId.value;
       var submitURL="/api/media/"+missionId;
     }
