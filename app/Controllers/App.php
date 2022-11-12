@@ -84,7 +84,7 @@ class App extends BaseController
             //insert form
             $url="/api/media";
             $method="post";
-            $row=array("id"=>"NULL", "missionId"=>$missionId, "name"=>"","description"=>"","latitude"=>"0","longitude"=>"0","datum"=>"","finished"=>"0");
+            $row=array("id"=>"NULL", "missionId"=>$missionId, "name"=>"","description"=>"","latitude"=>"0","longitude"=>"0","datum"=>"","finished"=>"0","mimetype"=>"");
         }
         return view("components/forms/mediaForm",array("id"=> $row["id"],"missionId"=>$row["missionId"], "method"=>$method,"url"=>$url,"data"=>$row));
     }
