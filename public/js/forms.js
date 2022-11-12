@@ -300,22 +300,24 @@ function mediaEditForm()
     var datatype="text";
     var contenttype=false;
     var processdata=false;
+    var data = new FormData(form);
+  
     if (iid>0)
     {
       submitMethod="PUT";
       missionId=form.elements.missionId.value;
       submitURL="/api/media/"+iid;
       datatype="json";
-      contentype="json";
+      contenttype="application/json";;
       processdata=true;
+      data=JSON.stringify(form);
     }
     
    
     $('#mediaFormSubmit').html('Sending..');
     
 
-    var data = new FormData(form);
-  
+   
     console.log("formdata",data);
     $.ajax({
       url:      submitURL,
