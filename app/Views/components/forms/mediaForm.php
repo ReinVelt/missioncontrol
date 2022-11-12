@@ -5,6 +5,8 @@
 <span class="d-none alert alert-success mb-3" id="res_message"></span>
 <?php
 if ($id>0) { $m="update"; }else { $m="post";}
+?>
+
 <form id="mediaForm" enctype='multipart/form-data' action="javascript:void(0);" method="<?= $m; ?>">
     <input type="hidden" name="id"        value="<?= $id; ?>">
     <input type="hidden" name="userId"    value="1">
