@@ -300,6 +300,7 @@ function mediaEditForm()
     var datatype="text";
     var contenttype=false;
     var processdata=false;
+    var encode=true;
     var data = new FormData(form);
   
     if (iid>0)
@@ -307,10 +308,11 @@ function mediaEditForm()
       submitMethod="PUT";
       missionId=form.elements.missionId.value;
       submitURL="/api/media/"+iid;
-     // datatype="text";
-      //contenttype="application/json";;
-     // processdata=true;
-     // data=JSON.stringify(form);
+      datatype="json";
+      contenttype="application/json";;
+      processdata=true;
+      data=JSON.stringify(form);
+      encode=true;
     }
     
    
@@ -325,6 +327,7 @@ function mediaEditForm()
       data:     data, //formData,
       dataType: datatype,
       cache: false,
+      encode:encode
       contentType: contenttype,
       processData:processdata,
       success: function( response ) {
