@@ -44,12 +44,20 @@ class Media extends ResourceController
                     {
                         $datecreated=$exif["EXIF"]["DateTimeOriginal"];
                     }
+                    
                     log_message(1,print_r($exif,true));
+
+                    $coordinate=array(0,0);
+                    if (strlen($this->request->getVar('coordinate'))>2)
+                    {
+                        $coordinate=explode(',',$this->request->getVar('coordinate'));
+                    }
+                    
                     $fields = [
                         'userId'=>1,
                         'missionId'=>$missionId,
-                        'longitude'=>$this->request->getVar("longitude"),
-                        'latitude'=>$this->request->getVar("latitude"),
+                        'longitude'=>$coordinate[1],
+                        'latitude'=>$coordinate[0],
                         'name' => $this->request->getVar("name"),
                         'description'  => $this->request->getVar("description"),
                         'mimetype'  => $r->getMimeType(),
@@ -129,11 +137,17 @@ class Media extends ResourceController
         $apiModel = new MediaModel();
         $row = $apiModel->where('id', $id)->first();
         //$id = $this->request->getVar('id');
+        $coordinate=array(0,0);
+        if (strlen($this->request->getVar('coordinate'))>2)
+        {
+            $coordinate=explode(',',$this->request->getVar('coordinate'));
+        }
         $data = [
+
             'userId'=>$this->request->getVar("userId"),
             'missionId'=>$this->request->getVar("missionId"),
-            'longitude'=>$this->request->getVar("longitude"),
-            'latitude'=>$this->request->getVar("latitude"),
+            'longitude'=>$coordinate[1],
+            'latitude'=>$coordinate[0],
             'name' => $this->request->getVar('name'),
             'description'  => $this->request->getVar('description'),
             'mimetype'  => $row["mimetype"],
