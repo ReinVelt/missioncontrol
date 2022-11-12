@@ -250,23 +250,20 @@ function responseGetMediaFormHandler () {
 
 };
 
-function getMediaForm(missionId=null)
+function getMediaForm(missionId=null,mediaId=0)
 {
 var xhttp = new XMLHttpRequest();
 xhttp.onload = responseGetMediaFormHandler;
 var url=baseUrl+"/app/mediaform/"+missionId;
+if (mediaId>0)
+{
+  url=baseUrl+"/app/mediaform/"+missionId+"/"+mediaId;
+}
 xhttp.open('GET',url, true);
 xhttp.send();
 }
 
-function getMediaForm(missionId=null,mediaId)
-{
-var xhttp = new XMLHttpRequest();
-xhttp.onload = responseGetMediaFormHandler;
-var url=baseUrl+"/app/mediaform/"+missionId+"/"+mediaId;
-xhttp.open('GET',url, true);
-xhttp.send();
-}
+
 
 
 function mediaEditForm()
