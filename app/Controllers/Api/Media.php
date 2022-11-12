@@ -138,7 +138,7 @@ class Media extends ResourceController
             'description'  => $this->request->getVar('description'),
             'mimetype'  => $data["mimetype"],
             'filesize'  => $data["filesize"],
-            'url'  => $data["url"],
+            'uri'  => $data["uri"],
             'datum'  => $this->request->getVar('datum')
         ];
         log_message(1,"form submit receive".print_r($data,true));
