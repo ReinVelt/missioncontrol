@@ -127,7 +127,7 @@ class Media extends ResourceController
     // update
     public function update($id = null){
         $apiModel = new MediaModel();
-        $data = $apiModel->where('id', $id)->first();
+        $row = $apiModel->where('id', $id)->first();
         //$id = $this->request->getVar('id');
         $data = [
             'userId'=>$this->request->getVar("userId"),
@@ -136,8 +136,8 @@ class Media extends ResourceController
             'latitude'=>$this->request->getVar("latitude"),
             'name' => $this->request->getVar('name'),
             'description'  => $this->request->getVar('description'),
-            'mimetype'  => $data["mimetype"],
-            'filesize'  => $data["filesize"],
+            'mimetype'  => $row["mimetype"],
+            'filesize'  => $row["filesize"],
             'uri'  => $data["uri"],
             'datum'  => $this->request->getVar('datum')
         ];
