@@ -246,7 +246,7 @@ function responseGetMediaFormHandler () {
   document.getElementById("mediaFormContainer").innerHTML=this.responseText;
   mediaEditForm();
 
-  //coordinateselectorInit('coordinatemediacontainer');
+  coordinateselectorInit('coordinatemediacontainer');
 
 };
 
