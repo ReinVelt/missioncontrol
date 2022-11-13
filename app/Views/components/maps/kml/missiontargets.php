@@ -23,8 +23,6 @@
 </Style>
  <Folder>          
     <?php
-
-<?php
 foreach($media as $row)
 {
         ?>
