@@ -59,7 +59,7 @@
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <styleUrl>#media</styleUrl>
                 <Icon>
-                    <href><?= base_url(); ?>/app/imgageresize/<?= $row["id"]; ?></href>
+                    <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
                 </Icon>
                 <Point>
                     <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
