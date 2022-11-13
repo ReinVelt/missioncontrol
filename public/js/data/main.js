@@ -95,7 +95,7 @@ function highlightMap(args)
   if (oldlat==0) { dist=1;}
  
   var zoom=Math.round(14-(dist*1.2));
-  if (zoom<4) { zoom=4;}
+  if (zoom<7) { zoom=7;}
   if (zoom>14){ zoom=14;}
   console.log("zoom",dist,zoom);
    flyToQueue.push({"lonlat":ol.proj.fromLonLat([lon, lat]),"zoom":zoom,"duration":dur});
