@@ -20,7 +20,26 @@ if ($id>0) { $m="put"; }else { $m="post";}
             <input name="userfile[]" id="media_file" type="file" class="form-control" id="file" aria-describedby="media_file_help" placeholder="Upload file" accept="image/jpeg" multiple>
         </div>
     <?php } else { ?>
-        <img src="/app/imageresize/<?= $id; ?>" style="width:100%">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="/app/imageresize/<?= $id; ?>" style="width:100%">
+                </div>
+                <div class="col-sm-6">
+                    <div class="hidden border rounded" >
+                        <div class="form-group">
+                            <label for="media_mimetype">Mimetype</label>
+                            <input name="mimetype" type="text"   disabled class="form-control" id="media_mimetype" aria-describedby="mission_start_help" placeholder="Mimetype" value="<?= $data["mimetype"]; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="media_filesize">Filesize</label>
+                            <input name="filesize" type="text"   disabled  class="form-control" id="media_filesize" aria-describedby="mission_start_help" placeholder="File size" value="<?= $data["filesize"]; ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php } ?>
 
     <div class="form-group">
@@ -44,19 +63,7 @@ if ($id>0) { $m="put"; }else { $m="post";}
             <input name="coordinate" type="text" class="form-control" id="coordinatemedia" aria-describedby="missiontarget_coordinate_help" placeholder="Enter coordinate" value="<?= $data["latitude"]; ?>,<?= $data["longitude"]; ?>">
         </div>
 
-    <div class="hidden border rounded" style="display:none;">
-        <div class="form-group">
-            <label for="media_mimetype">Mimetype</label>
-            <input name="mimetype" type="text"   class="form-control" id="media_mimetype" aria-describedby="mission_start_help" placeholder="Mimetype" value="<?= $data["mimetype"]; ?>">
-        </div>
-
-        <div class="form-group">
-            <label for="media_filesize">Filesize</label>
-            <input name="filesize" type="text"   class="form-control" id="media_filesize" aria-describedby="mission_start_help" placeholder="File size" value="<?= $data["filesize"]; ?>">
-        </div>
-    
-        
-    </div>
+   
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
