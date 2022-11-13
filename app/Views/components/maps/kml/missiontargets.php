@@ -23,6 +23,54 @@
 </Style>
  <Folder>          
     <?php
+
+<?php
+foreach($media as $row)
+{
+        ?>
+        <Placemark id="media<?= $row["id"]; ?>">
+            <name><?= $row["name"]; ?></name>
+            <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+            <Style>
+                <IconStyle>
+                    <Icon>
+                        <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
+                    </Icon>
+                </IconStyle>
+                <LabelStyle>
+                    <scale>0.1</scale>
+                </LabelStyle>
+            </Style>
+            <Icon>
+                <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
+            </Icon>
+            <Point>
+                <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
+            </Point>
+        </Placemark>
+<?php } ?>
+
+<?php
+foreach($gpslog as $row)
+{
+        ?>
+        <Placemark id="gpslog<?= $row["id"]; ?>">
+            <name><?= $row["name"]; ?></name>
+            <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+            <Style id="target">
+                <IconStyle>
+                    <Icon>
+                        <href><?= base_url()."/markers/yellowdot.png"; ?></href>
+                    </Icon>
+                </IconStyle>
+            </Style>
+            <Point>
+                <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
+            </Point>
+        </Placemark>
+<?php } ?>
+
+
     foreach($data as $row)
     {
             ?>
@@ -36,50 +84,8 @@
             </Placemark>
     <?php } ?>
 
-    <?php
-    foreach($gpslog as $row)
-    {
-            ?>
-            <Placemark id="gpslog<?= $row["id"]; ?>">
-                <name><?= $row["name"]; ?></name>
-                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <Style id="target">
-                    <IconStyle>
-                        <Icon>
-                            <href><?= base_url()."/markers/yellowdot.png"; ?></href>
-                        </Icon>
-                    </IconStyle>
-                </Style>
-                <Point>
-                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
-                </Point>
-            </Placemark>
-    <?php } ?>
+   
 
-    <?php
-    foreach($media as $row)
-    {
-            ?>
-            <Placemark id="media<?= $row["id"]; ?>">
-                <name><?= $row["name"]; ?></name>
-                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <Style>
-                    <IconStyle>
-                        <Icon>
-                            <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
-                        </Icon>
-                    </IconStyle>
-                    <LabelStyle>
-                        <scale>0.1</scale>
-                    </LabelStyle>
-                </Style>
-                <Icon>
-                    <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
-                </Icon>
-                <Point>
-                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
-                </Point>
-            </Placemark>
-    <?php } ?>
+  
     </Folder>
 </kml>
