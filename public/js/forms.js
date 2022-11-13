@@ -309,7 +309,7 @@ function mediaEditForm()
       missionId=form.elements.missionId.value;
       submitURL="/api/media/"+iid;
       datatype="json";
-      contenttype="application/json";;
+      contenttype="application/json";
       processdata=true;
       data=JSON.stringify(form);
       encode=true;
