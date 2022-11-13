@@ -30,7 +30,7 @@
               </div>
             </div> 
     
-        <div class="col-md-9" style="position:absolute; bottom:0px; left:20vw; right:0px; height:130px;  z-index:200; " >
+        <div  style="position:absolute; bottom:0px; left:20vw; right:0px; height:145px;  z-index:200; " >
           <a style="float:right;" data-bs-toggle="modal" data-bs-target="#formModalMedia" class="material-icons" onclick="getMediaForm(<?= $missionId; ?>,0); return false;">upload</a>
           <div style="width:100%; height: 130px; overflow:scroll;">
             <div class="container-fluid" id="missionMediaList" style="width:100%;"></div>
