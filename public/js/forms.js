@@ -313,6 +313,14 @@ function mediaEditForm()
       processdata=true;
       data=JSON.stringify(form);
       encode=true;
+      data=JSON.stringify({
+        "id":           parseInt(form.elements.id.value),
+        "missionId" :   parseInt(form.elements.missionId.value),
+        "name":         form.elements.name.value,
+        "description":  form.elements.description.value,
+        "datum":        form.elements.datum.value,
+        "coordinate":   form.elements.coordinate.value
+      });
     }
     
    
