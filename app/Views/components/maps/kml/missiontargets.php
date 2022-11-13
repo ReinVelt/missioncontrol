@@ -49,7 +49,13 @@
             <Placemark id="gpslog<?= $row["id"]; ?>">
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <styleUrl>#gpslog</styleUrl>
+                <Style id="target">
+                    <IconStyle>
+                        <Icon>
+                            <href><?= base_url()."/markers/yellowdot.png"; ?></href>
+                        </Icon>
+                    </IconStyle>
+                </Style>
                 <Point>
                     <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
                 </Point>
@@ -69,9 +75,9 @@
                             <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
                         </Icon>
                     </IconStyle>
-                    <labelStyle>
+                    <LabelStyle>
                         <scale>0.1</scale>
-                    </labelStyle>
+                    </LabelStyle>
                 </Style>
                 <Icon>
                     <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
