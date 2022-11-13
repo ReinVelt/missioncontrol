@@ -43,7 +43,13 @@
             <Placemark id="gpslog<?= $row["id"]; ?>">
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <styleUrl>#gpslog</styleUrl>
+                <Style>
+                    <IconStyle>
+                        <Icon>
+                            <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
+                        </Icon>
+                    </IconStyle>
+                </Style>
                 <Point>
                     <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
                 </Point>
