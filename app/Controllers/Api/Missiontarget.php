@@ -4,6 +4,7 @@ namespace App\Controllers\Api;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\GpslogModel;
+use App\Models\MediaModel;
 use App\Models\MissionTargetModel;
 
 class Missiontarget extends ResourceController
