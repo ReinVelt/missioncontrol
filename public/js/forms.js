@@ -115,7 +115,7 @@ function responseGetMissiontargetFormHandler () {
   document.getElementById("missionTargetFormContainer").innerHTML=this.responseText;
   missiontargetEditForm();
 
-  coordinateselectorInit('coordinateselectorcontainer');
+  coordinateselectorInit('coordinateselectorcontainer',"coordinate");
 
 };
 
@@ -246,7 +246,7 @@ function responseGetMediaFormHandler () {
   document.getElementById("mediaFormContainer").innerHTML=this.responseText;
   mediaEditForm();
 
-  coordinateselectorInit('coordinatemediacontainer');
+  coordinateselectorInit('coordinatemediacontainer',"coordinatemedia");
 
 };
 

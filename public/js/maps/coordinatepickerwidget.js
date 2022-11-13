@@ -1,6 +1,6 @@
 
 
-function coordinateselectorInit(elementId)
+function coordinateselectorInit(elementId,coordinateFieldId)
 
 {
 const vector = new ol.layer.Vector({
@@ -41,7 +41,7 @@ const displayFeatureInfo = function (pixel) {
 
 csmap.on('click', function (evt) {
   var lonlat=ol.proj.toLonLat(csmap.getCoordinateFromPixel(evt.pixel));
-  document.getElementById("coordinate").value=[lonlat[1],lonlat[0]];;
+  document.getElementById(coordinateFieldId).value=[lonlat[1],lonlat[0]];;
   console.log(evt);
   displayFeatureInfo(evt.pixel);
 });

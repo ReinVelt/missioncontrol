@@ -138,7 +138,6 @@ class Media extends ResourceController
         $row = $apiModel->where('id', $id)->first();
         //$id = $this->request->getVar('id');
         $coordinate=array(0,0);
-        log_message(1,"incomin: ".print_r($_REQUEST,true));
         if (strlen($this->request->getVar('coordinate'))>2)
         {
             $coordinate=explode(',',$this->request->getVar('coordinate'));
