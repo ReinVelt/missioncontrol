@@ -13,10 +13,16 @@ if ($id>0) { $m="put"; }else { $m="post";}
     <input type="hidden" name="missionId" value="<?= $missionId; ?>">
     
 
-    <div class="form-group">
-        <label for="media_file">File</label>
-        <input name="userfile[]" id="media_file" type="file" class="form-control" id="file" aria-describedby="media_file_help" placeholder="Upload file" accept="image/jpeg" multiple>
-    </div>
+    <?php if ($id==0)
+    { ?>
+        <div class="form-group">
+            <label for="media_file">File</label>
+            <input name="userfile[]" id="media_file" type="file" class="form-control" id="file" aria-describedby="media_file_help" placeholder="Upload file" accept="image/jpeg" multiple>
+        </div>
+    <?php } else { ?>
+        <img src="/app/imageresize/<?= $id; ?>" style="float:left; width:200px">
+    <?php } ?>
+
     <div class="form-group">
         <label for="media_name">Name</label>
         <input name="name" type="text" class="form-control" id="media_name" aria-describedby="media_name_help" placeholder="Enter  name" value="<?= $data["name"]; ?>">
