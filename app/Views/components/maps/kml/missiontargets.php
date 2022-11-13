@@ -70,7 +70,7 @@ foreach($gpslog as $row)
         </Placemark>
 <?php } ?>
 
-
+<?php
     foreach($data as $row)
     {
             ?>
