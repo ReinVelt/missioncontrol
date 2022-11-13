@@ -106,8 +106,8 @@ function updateMissionMedia(data)
         {
          // var url=data[i].url.substring(10,100)
         
-            var im='<div class="thumbnail" style="float:left; border:solid 1px silver; border-radius:10px; white-space: nowrap; vertical-align:top;">\
-                          <img src="/app/imageresize/'+data[i].id+'" style="max-height:100px; max-width:150px; border:solid 3px white; border-radius:10px;">\
+            var im='<div class="thumbnail" style="width:150px; height:100px; border:solid 1px silver; border-radius:10px; white-space: nowrap; vertical-align:top; display: inline-block;">\
+                          <img src="/app/imageresize/'+data[i].id+'" style="max-height:90px; max-width:140px; border:solid 3px white; border-radius:10px;">\
                           <a href="#" data-bs-toggle="modal" data-bs-target="#formModalMedia"  onclick="getMediaForm('+data[i].missionId+','+data[i].id+'); return false;" class="btn btn-sm">\
                             <span class="material-icons" style="font-size:x-small;">edit</span>\
                           </a>\
