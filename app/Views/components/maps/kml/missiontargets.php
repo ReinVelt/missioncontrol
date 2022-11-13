@@ -58,9 +58,15 @@
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <styleUrl>#media</styleUrl>
-                <Point>
-                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
-                </Point>
+            
+
+      <Icon>
+
+        <href><?= base_url(); ?>/app/imgageresize/<?= $row["id"]; ?></href>
+
+      </Icon>
+
+     
             </Placemark>
     <?php } ?>
     </Folder>
