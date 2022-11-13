@@ -20,7 +20,7 @@ if ($id>0) { $m="put"; }else { $m="post";}
             <input name="userfile[]" id="media_file" type="file" class="form-control" id="file" aria-describedby="media_file_help" placeholder="Upload file" accept="image/jpeg" multiple>
         </div>
     <?php } else { ?>
-        <img src="/app/imageresize/<?= $id; ?>" style="float:left; width:200px">
+        <img src="/app/imageresize/<?= $id; ?>" style="width:100%">
     <?php } ?>
 
     <div class="form-group">
