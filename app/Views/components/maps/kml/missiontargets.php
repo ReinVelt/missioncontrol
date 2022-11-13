@@ -69,6 +69,9 @@
                             <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
                         </Icon>
                     </IconStyle>
+                    <labelStyle>
+                        <scale>0.1</scale>
+                    </labelStyle>
                 </Style>
                 <Icon>
                     <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
