@@ -14,6 +14,13 @@
         </Icon>
     </IconStyle>
 </Style>
+<Style id="media">
+    <IconStyle>
+        <Icon>
+            <href><?= base_url()."/markers/yellowdot.png"; ?></href>
+        </Icon>
+    </IconStyle>
+</Style>
  <Folder>          
     <?php
     foreach($data as $row)
@@ -37,6 +44,20 @@
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <styleUrl>#gpslog</styleUrl>
+                <Point>
+                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
+                </Point>
+            </Placemark>
+    <?php } ?>
+
+    <?php
+    foreach($media as $row)
+    {
+            ?>
+            <Placemark id="media<?= $row["id"]; ?>">
+                <name><?= $row["name"]; ?></name>
+                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+                <styleUrl>#media</styleUrl>
                 <Point>
                     <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
                 </Point>
