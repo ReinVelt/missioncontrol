@@ -29,7 +29,13 @@
             <Placemark id="target<?= $row["id"]; ?>">
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <styleUrl>#target</styleUrl>
+                <Style id="target">
+                    <IconStyle>
+                        <Icon>
+                            <href><?= base_url()."/markers/yellowdot.png"; ?></href>
+                        </Icon>
+                    </IconStyle>
+                </Style>
                 <Point>
                     <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
                 </Point>
