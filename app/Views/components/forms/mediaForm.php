@@ -4,6 +4,7 @@
 
 <span class="d-none alert alert-success mb-3" id="res_message"></span>
 <?php
+if ( !isset($id) || !is_int($id) || ($id+0)<1) { $id=0;}
 if ($id>0) { $m="put"; }else { $m="post";}
 ?>
 
@@ -13,7 +14,7 @@ if ($id>0) { $m="put"; }else { $m="post";}
     <input type="hidden" name="missionId" value="<?= $missionId; ?>">
     
 
-    <?php if ($id==0)
+    <?php if ($id<1)
     { ?>
         <div class="form-group">
             <label for="media_file">File</label>
