@@ -96,6 +96,25 @@ function getRoute(orig,dest)
 function updateRoutes(data)
 {
   console.log(data);
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        features: []
+          
+        
+    })
+  });
+  for (var r=0;r<coordinates.length;r++)
+  {
+    layer.getSource().features.push(new ol.Feature({
+      geometry: new ol.geom.Point(ol.proj.fromLonLat([coordinates[r][0], coordinates[r][1] ] ))
+     })
+    );
+  }
+map.addLayer(layer);
+
+
+  var coordinates=data.features.geometry.coordinates;
+
   document.getElementById("route").innerHTML=data;
 }
 
