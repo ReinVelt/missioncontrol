@@ -61,7 +61,7 @@ foreach($gpslog as $row)
             <Style id="target">
                 <IconStyle>
                     <Icon>
-                        <href><?= base_url()."/markers/yellowdot.png"; ?></href>
+                        <href><?= base_url()."/markers/yellowdotsm.png"; ?></href>
                     </Icon>
                 </IconStyle>
             </Style>
