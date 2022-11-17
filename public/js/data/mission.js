@@ -97,8 +97,8 @@ function updateRoutes(data)
 {
 
   const image = new ol.style.Circle({
-    radius: 3,
-    fill: null,
+    radius: 2,
+    fill:  new ol.style.Fill({ color: 'rgba(128,0,0,0.2)',}),
     stroke: new ol.style.Stroke({color: 'blue', width: 1}),
   });
   
