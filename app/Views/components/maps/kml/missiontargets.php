@@ -58,7 +58,8 @@ foreach($gpslog as $row)
     {
         $dist=sqrt(
             ($oldRow["latitude"]-$row["latitude"])^2 +
-            ($oldRow["longitude"]-$row["longitude"])^2);
+            ($oldRow["longitude"]-$row["longitude"])^2
+        );
     }
     else
     {
