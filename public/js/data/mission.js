@@ -103,7 +103,7 @@ function updateRoutes(data)
   });
   
   const styles = {
-    'Point': new ol.style.circle.Style({
+    'Point': new ol.Style({
       image: image,
     }),
     
