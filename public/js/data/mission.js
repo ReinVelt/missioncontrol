@@ -132,12 +132,13 @@ function updateRoutes(data)
     vectorSource.addFeature(new ol.Feature(new ol.geom.Point( ol.proj.fromLonLat([c[0],c[1]]), styles['Point'])));
   }
 
-  var vectorLayer = new ol.layer.Vector({
+  var markerLayer = new ol.layer.Vector({
     source: vectorSource,
+    zIndex:10,
     //style: styleFunction,
   }); 
 
-  map.addLayer(vectorLayer);
+  map.addLayer(markerLayer);
   console.log(vectorLayer);
  
   
