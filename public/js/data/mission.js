@@ -105,13 +105,22 @@ function updateRoutes(data)
   const styles = {
     'Point': new ol.style.Style({
       image: image,
+    }), 
+    'Circle': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'red',
+        width: 2,
+      }),
+      fill: new ol.style.Fill({
+        color: 'rgba(255,0,0,0.2)',
+      }),
     }),
-    
   };
   
   var styleFunction = function (feature) {
     return styles[feature.getGeometry().getType()];
   };
+
   var vectorSource = new ol.source.Vector({
     features: new ol.format.GeoJSON().readFeatures(data),
   });
@@ -120,7 +129,7 @@ function updateRoutes(data)
 
   var vectorLayer = new ol.layer.Vector({
     source: vectorSource,
-    style: styleFunction,
+    //style: styleFunction,
   }); 
 
   map.addLayer(vectorLayer);
