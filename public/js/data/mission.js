@@ -144,6 +144,7 @@ function updateMissiontargets(data)
 {
     var el=document.getElementById("missionTargets");
       var html="";
+      var oldId=0;
       if (el)
       {
           for (var i=0;i<data.length;i++)
@@ -152,7 +153,7 @@ function updateMissiontargets(data)
               html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start rounded" data-bs-toggle="tooltip" style="border:solid 3px black !important;" title="'+data[i].description+'" onclick="highlightMap('+data[i].latitude+','+data[i].longitude+')">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
               html=html+'   <div class="mb-1 title"><img src="http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png" style="width:25px; float:left;"><a href="#'+data[i].id+'">'+data[i].name+'</a></div>';
-              if (oldId)
+              if (oldId>0)
               {
                 html=html+'   <a  style="font-size:18px; " class="material-icons hover" onclick="getRoute('+data[i].oldId+','+data[i].id+'); return false;">directions</a>';
               }
