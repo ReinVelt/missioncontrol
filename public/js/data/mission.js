@@ -116,6 +116,8 @@ function updateRoutes(data)
     features: new ol.format.GeoJSON().readFeatures(data),
   });
   
+  vectorSource.addFeature(new Feature(new Circle([5e6, 7e6], 1e6)));
+
   var vectorLayer = new ol.layer.Vector({
     source: vectorSource,
     style: styleFunction,
