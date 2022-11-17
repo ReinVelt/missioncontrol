@@ -141,11 +141,13 @@ class Missiontarget extends ResourceController
 
     function getRoute($originId, $destinationId)
     {
-        $origin=$this->show($originId);
-        $destination=$this->show($destinationId);
+        $apiModel = new MissionTargetModel();
+        $origin= $apiModel->where('id', $id)->first();
+        $destination= $apiModel->where('id', $id)->first();
         $originll=$origin->latitude.",".$origin->longitude;
         $destinationll=$destination->latitude.",".$destination->longitude;
-        $route=$this->OpenrouteserviceModel->getRoute($originll,$destinationll);
+        $routeModel=new OpenrouteserviceModel();
+        $route=$routesModel->getRoute($originll,$destinationll);
         $response = [
             'status'   => 200,
             'error'    => null,
