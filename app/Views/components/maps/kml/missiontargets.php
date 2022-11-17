@@ -54,7 +54,11 @@ foreach($media as $row)
 <?php
 foreach($gpslog as $row)
 {   
-        if (isset($oldRow))
+        if (
+                (isset($oldRow)) && 
+                (abs($oldRow["latitude"]-$row["latitude"])<1)  && 
+                (abs($oldRow["longitude"]-$row["longitude"])<1) 
+                )
         {
             ?>
            <Placemark id="gpslogroute<?= $oldRow["id"]."-".$row["id"]; ?>">
