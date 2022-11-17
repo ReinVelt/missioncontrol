@@ -71,11 +71,11 @@ foreach($gpslog as $row)
            <Placemark id="gpslogroute<?= $oldRow["id"]."-".$row["id"]; ?>">
                 <name><?= $dist; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
-                <style>
+                <Style>
                      <LineStyle>
-                            <color>ff222222</color>
+                            <color><?= 99-$dist; ?>222222</color>
                     </LineStyle>
-                </style>
+                </Style>
                 <LineString>
                     <coordinates>
                         <?= $oldRow["longitude"]; ?>,<?= $oldRow["latitude"]; ?>,0 
