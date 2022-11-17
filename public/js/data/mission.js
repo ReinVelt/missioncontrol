@@ -153,7 +153,7 @@ function updateMissiontargets(data)
               html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start rounded" data-bs-toggle="tooltip" style="border:solid 3px black !important;" title="'+data[i].description+'" onclick="highlightMap('+data[i].latitude+','+data[i].longitude+')">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
               html=html+'   <div class="mb-1 title"><img src="http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png" style="width:25px; float:left;"><a href="#'+data[i].id+'">'+data[i].name+'</a></div>';
-              html=html+ '<a  href="#" style="font-size:18px; float:right;" onclick="getRoute('+data[i].oldId+','+data[i].id+'); return false;"><span class="material-icons" >directions</span></a>';
+              html=html+ '<a  style="font-size:18px; float:right;" onclick="getRoute('+oldId+','+data[i].id+'); return false;"><span class="material-icons hover" >directions</span></a>';
               html=html+'<a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" style="font-size:18px; float:right;" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;"><span class="material-icons hover" >settings</span></a>';
               html=html+' </div>';
               html=html+'<div class="missioninfo">'
