@@ -97,7 +97,7 @@ function updateRoutes(data)
 {
 
   const vectorSource = ol.source.Vector({
-    features: new GeoJSON().readFeatures(data),
+    features: new ol.format.GeoJSON().readFeatures(data),
   });
   
   const vectorLayer = new ol.layer.Vector({
