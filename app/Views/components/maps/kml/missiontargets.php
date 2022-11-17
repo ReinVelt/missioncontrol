@@ -33,7 +33,9 @@ foreach($media as $row)
                 <IconStyle>
                     <Icon>
                         <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
+                        <scale>0.2</scale>
                     </Icon>
+                   
                 </IconStyle>
                 <LabelStyle>
                     <scale>0.1</scale>
