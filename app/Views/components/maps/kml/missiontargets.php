@@ -30,10 +30,11 @@ foreach($media as $row)
             <name><?= $row["name"]; ?></name>
             <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
             <Style>
+                <scale>0.2</scale>
                 <IconStyle>
                     <Icon>
                         <href><?= base_url(); ?>/app/imageresize/<?= $row["id"]; ?></href>
-                        <scale>0.2</scale>
+                        
                     </Icon>
                    
                 </IconStyle>
