@@ -144,8 +144,8 @@ class Missiontarget extends ResourceController
         $apiModel = new MissionTargetModel();
         $origin= $apiModel->where('id', $originId)->first();
         $destination= $apiModel->where('id', $destinationId)->first();
-        $originll=$origin["latitude"].",".$origin["longitude"];
-        $destinationll=$destination["latitude"].",".$destination["longitude"];
+        $originll=$origin["longitude"].",".$origin["latitude"];
+        $destinationll=$destination["longitude"].",".$destination["latitude"];
         $routeModel=new OpenrouteserviceModel();
         $route=$routeModel->getRoute($originll,$destinationll);
         $response = [
