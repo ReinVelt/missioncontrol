@@ -65,7 +65,7 @@ foreach($gpslog as $row)
     {
         $dist=0;
     }
-        if ($dist<0.5 && isset($oldRow))
+        if ($dist<0.3 && isset($oldRow))
         {
             ?>
            <Placemark id="gpslogroute<?= $oldRow["id"]."-".$row["id"]; ?>">
