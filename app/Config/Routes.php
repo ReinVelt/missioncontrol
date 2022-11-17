@@ -52,6 +52,7 @@ $routes->get('app/devices'                          , 'App::devices');
 $routes->get('api/mission/kml',                     'Api\Mission::kml');
 $routes->get('api/gpslog/kml/(:num)',               'Api\Gpslog::kml/$1');
 $routes->get('api/missiontarget/kml/(:num)',        'Api\Missiontarget::kml/$1');
+$routes->get('api/missiontarget/getroute/(:num)/(:num)',        'Api\Missiontarget::getRoute/$1/$2');
 $routes->get('api/missiontarget/mission/(:num)',    'Api\Missiontarget::mission/$1');
 $routes->post('api/media/upload/(:num)',            'Api\Media::upload/$1');
 $routes->get('api/media/mission/(:num)',            'Api\Media::mission/$1');

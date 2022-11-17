@@ -6,6 +6,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\GpslogModel;
 use App\Models\MediaModel;
 use App\Models\MissionTargetModel;
+use App\Models\OpenrouteserviceModel;
 
 class Missiontarget extends ResourceController
 {
@@ -136,6 +137,24 @@ class Missiontarget extends ResourceController
         ];
         
         return $this->respond($markup);
+    }
+
+    function getRoute($originId, $destinationId)
+    {
+        $origin=$this->show($originId);
+        $destination=$this->show($destinationId);
+        $originll=$origin["latitude"].",".$origin["longitude"];
+        $destinationll=$destination["latitude"].",".$destination["longitude"];
+        $route=$this->OpenrouteserviceModel->getRoute($originll,$destinationll);
+        $response = [
+            'status'   => 200,
+            'error'    => null,
+            'messages' => [
+                'success' => $route
+            ]
+        ];
+        
+        return $this->respond($response);
     }
 
    
