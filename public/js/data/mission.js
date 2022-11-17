@@ -101,7 +101,7 @@ function updateRoutes(data)
         features: []
     })
   });
-  for (var r=0;r<data.features.geometry.coordinates.length;r++)
+  for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
   {
     layer.getSource().features.push(new ol.Feature({
       geometry: new ol.geom.Point(ol.proj.fromLonLat([coordinates[r][0], coordinates[r][1] ] ))
