@@ -99,7 +99,7 @@ function updateRoutes(data)
   const image = new ol.style.Circle({
     radius: 5,
     fill: null,
-    stroke: new ol.style.circle.Stroke({color: 'red', width: 1}),
+    stroke: new ol.style({color: 'red', width: 1}),
   });
   
   const styles = {
