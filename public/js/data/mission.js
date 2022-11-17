@@ -102,7 +102,8 @@ function updateRoutes(data)
  
   for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
   {
-    source.addFeature(new ol.geom.Point(ol.proj.fromLonLat([coordinates[r][0], coordinates[r][1] ] )));
+    coordinates=data.features[0].geometry.coordinates[r];
+    source.addFeature(new ol.geom.Point(ol.proj.fromLonLat([coordinates[0], coordinates[1] ] )));
   }
   var layer = new ol.layer.Vector({
     source: source
