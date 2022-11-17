@@ -13,7 +13,7 @@ class OpenrouteserviceModel extends Model
     function getRoute($originLatlon,$destinationLatlon)
     {
         $profile="driving-car";
-        $url="https://api.openrouteservice.org/v2/directions/'.$profile.'/geojson";
+        $url="https://api.openrouteservice.org/v2/directions/driving-car/geojson";
         $body='{"coordinates":[['.$originLatlon.'],['.$destinationLatlon.']]}';
         $headers[]='authorization:'.$this->apikey;
         $headers[]='Content-Type: application/json; charset=utf-8';
