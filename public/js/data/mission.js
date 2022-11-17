@@ -152,7 +152,7 @@ function updateMissiontargets(data)
               html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start rounded" data-bs-toggle="tooltip" style="border:solid 3px black !important;" title="'+data[i].description+'" onclick="highlightMap('+data[i].latitude+','+data[i].longitude+')">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
               html=html+'   <div class="mb-1 title"><img src="http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png" style="width:25px; float:left;"><a href="#'+data[i].id+'">'+data[i].name+'</a></div>';
-              if (isset($oldId))
+              if (oldId)
               {
                 html=html+'   <a  style="font-size:18px; " class="material-icons hover" onclick="getRoute('+data[i].oldId+','+data[i].id+'); return false;">directions</a>';
               }
@@ -164,7 +164,7 @@ function updateMissiontargets(data)
               html=html+  '</div>';
               html=html+  '<div class="description">'+data[i].description+'</div>'
               html=html+'</div></div>';
-              $oldId=data[i].id;
+              oldId=data[i].id;
           }
           el.innerHTML=html;
           console.log("missionstargetslist updated");
