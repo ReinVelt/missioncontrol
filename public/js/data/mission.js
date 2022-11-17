@@ -134,7 +134,7 @@ function updateRoutes(data)
 
   var markerLayer = new ol.layer.Vector({
     source: vectorSource,
-    zIndex:10,
+    zIndex:-1,
     //style: styleFunction,
   }); 
 
