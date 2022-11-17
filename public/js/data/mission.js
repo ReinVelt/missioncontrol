@@ -118,7 +118,8 @@ function updateRoutes(data)
   };
   
   var styleFunction = function (feature) {
-    return styles[feature.getGeometry().getType()];
+    //return styles[feature.getGeometry().getType()];
+    return styles['Point'];
   };
 
   var vectorSource = new ol.source.Vector({
