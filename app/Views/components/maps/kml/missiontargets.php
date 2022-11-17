@@ -73,7 +73,7 @@ foreach($gpslog as $row)
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <style>
                      <LineStyle>
-                            <color>88ffffff</color>
+                            <color>ff222222</color>
                     </LineStyle>
                 </style>
                 <LineString>
