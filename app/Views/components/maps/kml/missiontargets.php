@@ -53,7 +53,29 @@ foreach($media as $row)
 
 <?php
 foreach($gpslog as $row)
-{
+{   
+        if (isset($oldRow))
+        {
+            ?>
+           <Placemark id="gpslogroute<?= $oldRow["id"]."-".$row["id"]; ?>">
+                <name><?= $row["name"]; ?></name>
+                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+                <style>
+                     <LineStyle>
+                            <color>ffffff00</color>
+                    </LineStyle>
+                </style>
+                <LineString>
+                    <coordinates>
+                        <?= $oldRow["longitude"]; ?>,<?= $oldRow["latitude"]; ?>,0 
+                        <?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0
+                    </coordinates>
+                </LineString>
+            </Placemark>
+<?php
+
+        }
+
         ?>
         <Placemark id="gpslog<?= $row["id"]; ?>">
             <name><?= $row["name"]; ?></name>
@@ -69,7 +91,9 @@ foreach($gpslog as $row)
                 <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
             </Point>
         </Placemark>
-<?php } ?>
+<?php 
+    $oldRow=$row;
+} ?>
 
 <?php
     foreach($data as $row)
