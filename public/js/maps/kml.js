@@ -60,16 +60,16 @@ const displayFeatureInfo = function (pixel) {
     }
    
   } 
-  console.log("info:",info);
+  //console.log("info:",info);
 };
 
-map.on('pointermove', function (evt) {
+/*map.on('pointermove', function (evt) {
   if (evt.dragging) {
     return;
   }
   const pixel = map.getEventPixel(evt.originalEvent);
   displayFeatureInfo(pixel);
-});
+});*/
 
 map.on('click', function (evt) {
   displayFeatureInfo(evt.pixel);

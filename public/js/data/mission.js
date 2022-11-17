@@ -109,19 +109,20 @@ function updateRoutes(data)
     
   };
   
-  const styleFunction = function (feature) {
+  var styleFunction = function (feature) {
     return styles[feature.getGeometry().getType()];
   };
-  const vectorSource = new ol.source.Vector({
+  var vectorSource = new ol.source.Vector({
     features: new ol.format.GeoJSON().readFeatures(data),
   });
   
-  const vectorLayer = new ol.layer.Vector({
+  var vectorLayer = new ol.layer.Vector({
     source: vectorSource,
     style: styleFunction,
   }); 
 
   map.addLayer(vectorLayer);
+  console.log(vectorLayer);
  
   
 
