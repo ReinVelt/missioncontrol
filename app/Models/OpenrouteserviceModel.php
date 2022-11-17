@@ -15,7 +15,7 @@ class OpenrouteserviceModel extends Model
         $profile="driving-car";
         $url="https://api.openrouteservice.org/v2/directions/'.$profile.'/geojson";
         $body='{"coordinates":[['.$originLatlon.'],['.$destinationLatlon.']]}';
-        $headers[]='authorisation:'.$this->apikey;
+        $headers[]='authorization:'.$this->apikey;
         $curl=curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_POST, TRUE);
