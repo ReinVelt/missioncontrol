@@ -6,7 +6,8 @@ var data={
             {
                 "mission":[],
                 "targets":[],
-                "media":[]
+                "media":[],
+                "routes":[]
             }
         };
 
@@ -36,6 +37,12 @@ function responseMissionDetailHandler () {
 function responseGpslogHandler () {
    var jsonData = JSON.parse(this.responseText);
    data.gpslog=jsonData;
+};
+
+function responseRouteHandler () {
+  var jsonData = JSON.parse(this.responseText);
+  data.active.routes.push(jsonData);
+  updateRoutes(jsonData);
 };
 
 function getMissionData()
@@ -78,8 +85,18 @@ function getGpslogData()
   xhttp.send();
 }
 
+function getRoute(orig,dest)
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onload = responseRouteHandler;
+  xhttp.open('GET',baseUrl+'/api/missiontarget/getroute/'+orig+'/'+dest, true);
+  xhttp.send();
+}
 
-
+function updateRoutes(data)
+{
+  console.log(data);
+}
 
 function updateMissionDetails(data)
 {
@@ -134,6 +151,10 @@ function updateMissiontargets(data)
               html=html+'<div id="missionstargetListItem'+data[i].id+'" class="list-group-item list-group-item-action flex-column align-items-start rounded" data-bs-toggle="tooltip" style="border:solid 3px black !important;" title="'+data[i].description+'" onclick="highlightMap('+data[i].latitude+','+data[i].longitude+')">';
               html=html+' <div class="d-flex w-100 justify-content-between">';
               html=html+'   <div class="mb-1 title"><img src="http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png" style="width:25px; float:left;"><a href="#'+data[i].id+'">'+data[i].name+'</a></div>';
+              if (isset($oldId))
+              {
+                html=html+'   <a data-bs-toggle="modal" style="font-size:18px; float:right;" class="material-icons hover" onclick="getRoute('+data[i].oldId+','+data[i].id+'); return false;">directions</a>';
+              }
               html=html+'   <a data-bs-toggle="modal" data-bs-target="#formModalMissionTarget" style="font-size:18px; float:right;" class="material-icons hover" onclick="getMissiontargetForm('+data[i].missionId+','+data[i].id+'); return false;">settings</a>';
               html=html+' </div>';
               html=html+'<div class="missioninfo">'
@@ -142,6 +163,7 @@ function updateMissiontargets(data)
               html=html+  '</div>';
               html=html+  '<div class="description">'+data[i].description+'</div>'
               html=html+'</div></div>';
+              $oldId=data[i].id;
           }
           el.innerHTML=html;
           console.log("missionstargetslist updated");
@@ -231,6 +253,8 @@ function flyTo(location, done) {
   
  
 }
+
+
 
 
 
