@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-9 col-auto">
-           <img src="/busje.jpg" style="width:50%;">
+           <img src="/busje.jpg" style="width:80%;">
             <div id="info"></div>
         </div>
        >

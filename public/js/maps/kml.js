@@ -6,6 +6,9 @@ const kmlLayer = new ol.layer.Vector({
   }), preload: Infinity
 });
 
+
+var info=[];
+
 var satelliteLayer=new ol.layer.Tile({
   source: new ol.source.XYZ({
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -45,17 +48,19 @@ labelLayer.setOpacity(0.3);
 
 const displayFeatureInfo = function (pixel) {
   const features = [];
+  info=[];
   map.forEachFeatureAtPixel(pixel, function (feature) {
     features.push(feature);
   });
   if (features.length > 0) {
-    const info = [];
+ 
     let i, ii;
     for (i = 0, ii = features.length; i < ii; ++i) {
-      info.push(features[i].get('name'));
+      info.push(features[i]);
     }
    
   } 
+  console.log("info:",info);
 };
 
 map.on('pointermove', function (evt) {
