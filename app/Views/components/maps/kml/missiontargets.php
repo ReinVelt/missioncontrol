@@ -57,8 +57,8 @@ foreach($gpslog as $row)
     if (isset($oldRow))
     {
         $dist=sqrt(
-            ($oldRow["latitude"]-$row["latitude"])^2 +
-            ($oldRow["longitude"]-$row["longitude"])^2
+            (abs($oldRow["latitude"])-abs($row["latitude"]))^2 +
+            (abs($oldRow["longitude"])-abs($row["longitude"]))^2
         );
     }
     else
@@ -69,7 +69,7 @@ foreach($gpslog as $row)
         {
             ?>
            <Placemark id="gpslogroute<?= $oldRow["id"]."-".$row["id"]; ?>">
-                <name><?= $row["name"]; ?></name>
+                <name><?= $dist; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <style>
                      <LineStyle>
