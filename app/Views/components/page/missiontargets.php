@@ -26,6 +26,9 @@
                       </a>
                     </div>
                     <div id="missionTargets" class="panel-body">---</div>
+                    <div id="route">
+                     route
+                    </div>
                 </div>   
               </div>
             </div> 
