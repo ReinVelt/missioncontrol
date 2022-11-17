@@ -109,10 +109,6 @@ function updateRoutes(data)
  
   
 
-
-  var coordinates=data.features.geometry.coordinates;
-
-  document.getElementById("route").innerHTML=data;
 }
 
 function updateMissionDetails(data)
