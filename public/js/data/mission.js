@@ -96,18 +96,20 @@ function getRoute(orig,dest)
 function updateRoutes(data)
 {
   console.log(data);
-  var layer = new ol.layer.Vector({
-    source: new ol.source.Vector({
-        features: []
-    })
+  var source=new ol.source.Vector({
+    features: []
   });
+ 
   for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
   {
-    layer.getSource().features.push(new ol.Feature({
+    source.features.push(new ol.Feature({
       geometry: new ol.geom.Point(ol.proj.fromLonLat([coordinates[r][0], coordinates[r][1] ] ))
      })
     );
   }
+  var layer = new ol.layer.Vector({
+    source: source
+  });
 map.addLayer(layer);
 
 
