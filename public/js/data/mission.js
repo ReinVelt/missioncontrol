@@ -129,7 +129,7 @@ function updateRoutes(data)
   for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
   {
     var c=data.features[0].geometry.coordinates[r];
-    vectorSource.addFeature(new ol.Feature(new ol.geom.Circle([c[0], c[1]], 10)));
+    vectorSource.addFeature(new ol.Feature(new ol.geom.Point( ol.proj.fromLonLat([c[0],c[1]]), styles['Point'])));
   }
 
   var vectorLayer = new ol.layer.Vector({
