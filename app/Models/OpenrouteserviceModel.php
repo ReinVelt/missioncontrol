@@ -16,6 +16,8 @@ class OpenrouteserviceModel extends Model
         $url="https://api.openrouteservice.org/v2/directions/'.$profile.'/geojson";
         $body='{"coordinates":[['.$originLatlon.'],['.$destinationLatlon.']]}';
         $headers[]='authorization:'.$this->apikey;
+        $headers[]='Content-Type: application/json; charset=utf-8';
+        $headers[]='Accept: application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8';
         $curl=curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_POST, TRUE);
