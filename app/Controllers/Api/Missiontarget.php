@@ -148,7 +148,7 @@ class Missiontarget extends ResourceController
         $destinationll=$destination["longitude"].",".$destination["latitude"];
         $routeModel=new OpenrouteserviceModel();
         $route=$routeModel->getRoute($originll,$destinationll);
-        $response = json_decode($route)
+        $response = json_encode($route)
         ];
         
         return $this->respond($response);
