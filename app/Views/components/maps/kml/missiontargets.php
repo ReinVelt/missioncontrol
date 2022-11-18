@@ -57,7 +57,7 @@ foreach($media as $row)
     foreach($route as $row)
     {
             ?>
-            <Placemark id="target<?= $row["id"]; ?>">
+            <Placemark id="route<?= $row["id"]; ?>">
                 <name><?= $row["name"]; ?></name>
                 <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
                 <Style id="target">
