@@ -7,6 +7,7 @@ use App\Models\GpslogModel;
 use App\Models\MediaModel;
 use App\Models\MissionTargetModel;
 use App\Models\OpenrouteserviceModel;
+use App\Models\MissionTargetrouteModel;
 
 class Missiontarget extends ResourceController
 {
