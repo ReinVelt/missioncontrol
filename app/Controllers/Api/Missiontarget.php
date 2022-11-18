@@ -153,9 +153,9 @@ class Missiontarget extends ResourceController
         $route=$routeModel->getRoute($originll,$destinationll);
         $response = json_decode($route);
         $routeModel=new MissionTargetrouteModel();
-        for ($i=0; $i<count($response->features[0]->geometry.coordinates);$i++)
+        for ($i=0; $i<count($response->features[0]->geometry->coordinates);$i++)
         {
-            $c=response->features[0]->geometry.coordinates[i];
+            $c=response->features[0]->geometry->coordinates[i];
             $data=array(
               
                     'missionId' => $missionId,
