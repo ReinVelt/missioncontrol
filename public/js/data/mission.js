@@ -126,10 +126,10 @@ function updateRoutes(data)
     //features: new ol.format.GeoJSON().readFeatures(data),
   });
 
-  for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
+  for (var r=0;r<data.length;r++)
   {
-    var c=data.features[0].geometry.coordinates[r];
-    vectorSource.addFeature(new ol.Feature(new ol.geom.Point( ol.proj.fromLonLat([c[0],c[1]]), styles['Point'])));
+    var c=data[r];
+    vectorSource.addFeature(new ol.Feature(new ol.geom.Point( ol.proj.fromLonLat([c.longitude,c.latitude]]), styles['Point'])));
   }
 
   var markerLayer = new ol.layer.Vector({
