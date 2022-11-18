@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class MissionTargetrouteModel extends Model
 {
-    protected $table = 'MISSION_TARGETS_ROUTES';
+    protected $table = 'MISSION_TARGETSROUTES';
     protected $primaryKey = 'id';
     protected $allowedFields = [
       'missionId', 
