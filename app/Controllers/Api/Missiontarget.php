@@ -166,7 +166,7 @@ class Missiontarget extends ResourceController
                    
 
             );
-            $routeModel->insert($data)
+            $routeModel->insert($data);
         }
         return $data;
     }
