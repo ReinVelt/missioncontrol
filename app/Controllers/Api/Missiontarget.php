@@ -176,7 +176,7 @@ class Missiontarget extends ResourceController
     {
         $apiModel = new MissionTargetrouteModel();
         $routepoints= $apiModel->where('$destinationId', $destinationId)->first();
-        if (count($routepoints)>0) {
+        if (is_array($routepoints) && count($routepoints)>0) {
             $data=$routepoints;
         }
         else
