@@ -58,8 +58,8 @@ foreach($media as $row)
     {
             ?>
             <Placemark id="route<?= $route["id"]; ?>">
-                <name><?= $route["id"]; ?></name>
-                <description>hgfgh</description>
+                <name></name>
+                <description></description>
                 <Style>
                     <IconStyle>
                         <Icon>
