@@ -123,7 +123,7 @@ function updateRoutes(data)
   };
 
   var vectorSource = new ol.source.Vector({
-    features: new ol.format.GeoJSON().readFeatures(data),
+    //features: new ol.format.GeoJSON().readFeatures(data),
   });
 
   for (var r=0;r<data.features[0].geometry.coordinates.length;r++)
