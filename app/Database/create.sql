@@ -88,6 +88,15 @@ CREATE TABLE MEDIA (
     datum datetime NOT NULL
 );
 
+create table MISSION_TARGETSROUTES (
+    id INT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    missionId INT NOT NULL,
+    missiontarget_originId INT NOT NULL,
+    missiontarget_destinationId INT NOT NULL,
+    sequence INT NOT NULL,
+    longitude double(12,8) NOT NULL,
+    latitude double(12,8) NOT NULL);
+
 CREATE USER 'r31n'@'%' IDENTIFIED BY 'password';
 GRANT ALL ON r31n.* to 'r31n'@'%';
 FLUSH PRIVILEGES;
