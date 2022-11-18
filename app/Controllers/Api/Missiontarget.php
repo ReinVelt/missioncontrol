@@ -176,7 +176,7 @@ class Missiontarget extends ResourceController
     function getRoute($originId, $destinationId)
     {
         $apiModel = new MissionTargetrouteModel();
-        $routepoints= $apiModel->where('$destinationId', $destinationId)->first();
+        $routepoints= $apiModel->where('missiontarget_destinationId', $destinationId)->first();
         if (is_array($routepoints) && count($routepoints)>0) {
             $data=$routepoints;
         }
