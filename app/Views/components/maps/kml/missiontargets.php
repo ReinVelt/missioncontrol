@@ -66,6 +66,9 @@ foreach($media as $row)
                             <href><?= base_url()."/markers/bluedotsm.png"; ?></href>
                         </Icon>
                     </IconStyle>
+                    <LabelStyle>
+                    <scale>0.01</scale>
+                </LabelStyle>
                 </Style>
                 <Point>
                     <coordinates><?= $route["longitude"]; ?>,<?= $route["latitude"]; ?>,0</coordinates>
