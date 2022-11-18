@@ -162,8 +162,8 @@ class Missiontarget extends ResourceController
                     'missionId' => $missionId,
                     'missiontarget_originId'=>$originId,
                     'missiontarget_destinationId'=>$destinationId,
-                    'latitude'  => $c[0],
-                    'longitude'  => $c[1],
+                    'latitude'  => $c[1],
+                    'longitude'  => $c[0],
                     
             );
 
