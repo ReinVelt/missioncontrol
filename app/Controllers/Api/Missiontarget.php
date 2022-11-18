@@ -130,7 +130,7 @@ class Missiontarget extends ResourceController
         $media = $apiModel->where('missionId', $missionId)->orderBy('datum','asc')->findAll();
 
 
-        $apiModel=new MediaModel();
+        $apiModel=new MissionTargetrouteModel();
         $routes = $apiModel->where('missionId', $missionId)->findAll();
 
 
