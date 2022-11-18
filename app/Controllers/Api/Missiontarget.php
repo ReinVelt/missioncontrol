@@ -139,17 +139,52 @@ class Missiontarget extends ResourceController
         return $this->respond($markup);
     }
 
-    function getRoute($originId, $destinationId)
+    function fetchRoute($originId,$destinationId)
     {
         $apiModel = new MissionTargetModel();
         $origin= $apiModel->where('id', $originId)->first();
+        $missionId=$origin["missionId"];
         $destination= $apiModel->where('id', $destinationId)->first();
+
         $originll=$origin["longitude"].",".$origin["latitude"];
         $destinationll=$destination["longitude"].",".$destination["latitude"];
         $routeModel=new OpenrouteserviceModel();
         $route=$routeModel->getRoute($originll,$destinationll);
         $response = json_decode($route);
-        return $this->respond($response);
+        $routeModel=new MissionTargetrouteModel();
+        for ($i=0; $i<count($response->features[0]->geometry.coordinates);$i++)
+        {
+            $c=response->features[0]->geometry.coordinates[i];
+            $data=array(
+              
+                    'missionId' => $missionId,
+                    'missiontarget_originId'=>$originId,
+                    'missiontarget_destinationId'=>$destinationId,
+                    'latitude'  => $coordinate[0],
+                    'longitude'  => $coordinate[1],
+                    'sequence'  => $i,
+                   
+
+            );
+            $routeModel->insert($data)
+        }
+        return $data;
+    }
+
+
+    function getRoute($originId, $destinationId)
+    {
+        $apiModel = new MissionTargetrouteModel();
+        $routepoints= $apiModel->where('$destinationId', $destinationId)->first();
+        if (count($routepoints)>0) {
+            $data=$routepoints;
+        }
+        else
+        {
+            $data=$this->fetchRoute($originId,$destinationId);
+        }
+        
+        return $this->respond($data);
     }
 
    
