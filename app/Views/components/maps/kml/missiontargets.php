@@ -54,13 +54,13 @@ foreach($media as $row)
 
 
 <?php
-    foreach($routes as $row)
+    foreach($routes as $route)
     {
             ?>
             <Placemark id="route<?= $row["id"]; ?>">
                 <name><?= $row["id"]; ?></name>
-                <description></description>
-                <Style id="target">
+                <description>hgfgh</description>
+                <Style>
                     <IconStyle>
                         <Icon>
                             <href><?= base_url()."/markers/bluedotsm.png"; ?></href>
@@ -68,7 +68,7 @@ foreach($media as $row)
                     </IconStyle>
                 </Style>
                 <Point>
-                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
+                    <coordinates><?= $route["longitude"]; ?>,<?= $route["latitude"]; ?>,0</coordinates>
                 </Point>
             </Placemark>
     <?php } ?>
