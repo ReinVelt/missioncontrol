@@ -67,7 +67,7 @@ foreach($media as $row)
                         </Icon>
                     </IconStyle>
                     <LabelStyle>
-                    <scale>0.00</scale>
+                    <scale>0.0001/scale>
                 </LabelStyle>
                 </Style>
                 <Point>
