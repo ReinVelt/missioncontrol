@@ -153,21 +153,22 @@ class Missiontarget extends ResourceController
         $route=$routeModel->getRoute($originll,$destinationll);
         $response = json_decode($route);
         $routeModel=new MissionTargetrouteModel();
+        $route=array();
         for ($i=0; $i<count($response->features[0]->geometry->coordinates);$i++)
         {
             $c=$response->features[0]->geometry->coordinates[$i];
             $data=array(
-              
+                   'sequence'  => $i,
                     'missionId' => $missionId,
                     'missiontarget_originId'=>$originId,
                     'missiontarget_destinationId'=>$destinationId,
                     'latitude'  => $c[0],
                     'longitude'  => $c[1],
-                    'sequence'  => $i,
-                   
-
+                    
             );
+
             $routeModel->insert($data);
+            $routes[$i]=$data;
         }
         return $data;
     }
@@ -176,7 +177,7 @@ class Missiontarget extends ResourceController
     function getRoute($originId, $destinationId)
     {
         $apiModel = new MissionTargetrouteModel();
-        $routepoints= $apiModel->where('missiontarget_destinationId', $destinationId)->first();
+        $routepoints= $apiModel->where('missiontarget_destinationId', $destinationId)->findAll();
         if (is_array($routepoints) && count($routepoints)>0) {
             $data=$routepoints;
         }
@@ -185,7 +186,7 @@ class Missiontarget extends ResourceController
             $data=$this->fetchRoute($originId,$destinationId);
         }
         
-        return $this->respond($data);
+        return $this->respond(json_encode($data));
     }
 
    
