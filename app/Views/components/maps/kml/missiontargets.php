@@ -54,12 +54,12 @@ foreach($media as $row)
 
 
 <?php
-    foreach($route as $row)
+    foreach($routes as $row)
     {
             ?>
             <Placemark id="route<?= $row["id"]; ?>">
-                <name><?= $row["name"]; ?></name>
-                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+                <name><?= $row["id"]; ?></name>
+                <description></description>
                 <Style id="target">
                     <IconStyle>
                         <Icon>
