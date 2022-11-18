@@ -128,7 +128,13 @@ class Missiontarget extends ResourceController
 
         $apiModel=new MediaModel();
         $media = $apiModel->where('missionId', $missionId)->orderBy('datum','asc')->findAll();
-        $markup=view('components/maps/kml/missiontargets',array("data"=>$data,"gpslog"=>$gpslog,"media"=>$media));
+
+
+        $apiModel=new MediaModel();
+        $route = $apiModel->where('missionId', $missionId)->orderBy('id','asc')->findAll();
+
+
+        $markup=view('components/maps/kml/missiontargets',array("data"=>$data,"gpslog"=>$gpslog,"media"=>$media,"route"=>$route));
         $response = [
             'status'   => 200,
             'error'    => null,

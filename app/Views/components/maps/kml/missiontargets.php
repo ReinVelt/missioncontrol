@@ -51,6 +51,28 @@ foreach($media as $row)
         </Placemark>
 <?php } ?>
 
+
+
+<?php
+    foreach($route as $row)
+    {
+            ?>
+            <Placemark id="target<?= $row["id"]; ?>">
+                <name><?= $row["name"]; ?></name>
+                <description>[<?= $row["datum"]; ?>] <?= $row["description"]; ?></description>
+                <Style id="target">
+                    <IconStyle>
+                        <Icon>
+                            <href><?= base_url()."/markers/bluedotsm.png"; ?></href>
+                        </Icon>
+                    </IconStyle>
+                </Style>
+                <Point>
+                    <coordinates><?= $row["longitude"]; ?>,<?= $row["latitude"]; ?>,0</coordinates>
+                </Point>
+            </Placemark>
+    <?php } ?>
+
 <?php
 foreach($gpslog as $row)
 {   
